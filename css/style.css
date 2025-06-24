@@ -10,7 +10,8 @@ body {
 }
 
 a {
-    font-family: 'Roboto Slab', serif;
+    /* font-family: 'Roboto Slab', serif; */
+    font-family: "Noto Sans KR", sans-serif;
     color: #D2691E;
     transition: 0.5s;
 }
