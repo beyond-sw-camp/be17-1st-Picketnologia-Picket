@@ -4,7 +4,7 @@
 
 body {
     color: #666;
-    font-family: 'Roboto', sans-serif;
+    font-family: "Noto Sans KR", sans-serif;
     font-weight: 400;
     background: #fff;
 }
@@ -389,8 +389,9 @@ h6 {
     margin: 0;
 }
 
+/* Noto Sans KR 한국어 폰트 추가*/
 .nav-menu a {
-    font-family: 'Roboto Slab', serif;
+      font-family: "Noto Sans KR", sans-serif;
     padding: 15px 8px 10px 8px;
     text-decoration: none;
     display: inline-block;
