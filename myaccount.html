@@ -1,0 +1,412 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <title>Tech Conference</title>
+        <meta content="width=device-width, initial-scale=1.0" name="viewport">
+        <meta content="" name="keywords">
+        <meta content="" name="description">
+
+        <link href="img/favicon.ico" rel="icon">
+        <link href="img/apple-touch-icon.png" rel="apple-touch-icon">
+
+        <link href="https://fonts.googleapis.com/css?family=Roboto+Slab:400,700|Roboto:300,400,500,700,900" rel="stylesheet"> 
+
+        <link href="vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+
+        <link href="vendor/font-awesome/css/font-awesome.min.css" rel="stylesheet">
+        <link href="vendor/animate/animate.min.css" rel="stylesheet">
+        <link href="vendor/ionicons/css/ionicons.min.css" rel="stylesheet">
+        <link href="vendor/owlcarousel/assets/owl.carousel.min.css" rel="stylesheet">
+
+        <link href="css/style.css" rel="stylesheet">
+
+        <style>
+            .mypage-container {
+                max-width: 700px; /* 전체 컨테이너 너비 조정 */
+                margin: 50px auto; /* 상하 여백 및 가운데 정렬 */
+                padding: 20px;
+                font-family: 'Roboto', sans-serif;
+                color: #333;
+            }
+
+            .info-section {
+                background-color: #fff;
+                border: 1px solid #eee;
+                border-radius: 8px;
+                box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+                margin-bottom: 25px;
+                padding: 20px 30px; /* 좌우 패딩을 늘려 내용이 안쪽으로 들어가게 */
+            }
+
+            .section-title {
+                font-size: 20px;
+                font-weight: 700;
+                margin-bottom: 20px;
+                color: #333;
+            }
+
+            .info-item {
+                display: flex;
+                justify-content: space-between;
+                align-items: center;
+                padding: 12px 0;
+                border-bottom: 1px solid #f0f0f0; /* 항목 간 구분선 */
+                font-size: 15px;
+            }
+
+            .info-item:last-child {
+                border-bottom: none; /* 마지막 항목의 하단선 제거 */
+            }
+
+            .info-label {
+                color: #555;
+                font-weight: 500;
+                width: 120px; /* 레이블 너비 고정 (필요시) */
+                flex-shrink: 0;
+            }
+
+            .info-value {
+                text-align: right;
+                flex-grow: 1; /* 남은 공간을 차지하여 우측 정렬 */
+                color: #333;
+                display: flex;
+                justify-content: flex-end; /* 값 내부 정렬 */
+                align-items: center;
+            }
+
+            .info-value.email-value {
+                font-weight: 500;
+            }
+
+            .info-value .btn-change {
+                background-color: #fff;
+                border: 1px solid #ddd;
+                color: #555;
+                padding: 4px 10px;
+                border-radius: 4px;
+                font-size: 13px;
+                cursor: pointer;
+                margin-left: 10px;
+            }
+
+            .info-value .btn-complete {
+                background-color: #f7f7f7;
+                border: 1px solid #ddd;
+                color: #888;
+                padding: 4px 12px;
+                border-radius: 20px; /* 둥근 버튼 */
+                font-size: 13px;
+                cursor: default; /* 완료 버튼은 클릭 안 되게 */
+            }
+
+            .toggle-switch {
+                position: relative;
+                display: inline-block;
+                width: 40px;
+                height: 20px;
+            }
+
+            .toggle-switch input {
+                opacity: 0;
+                width: 0;
+                height: 0;
+            }
+
+            .slider {
+                position: absolute;
+                cursor: pointer;
+                top: 0;
+                left: 0;
+                right: 0;
+                bottom: 0;
+                background-color: #ccc;
+                -webkit-transition: .4s;
+                transition: .4s;
+                border-radius: 20px; /* 둥근 슬라이더 */
+            }
+
+            .slider:before {
+                position: absolute;
+                content: "";
+                height: 16px;
+                width: 16px;
+                left: 2px;
+                bottom: 2px;
+                background-color: white;
+                -webkit-transition: .4s;
+                transition: .4s;
+                border-radius: 50%; /* 원형 핸들 */
+            }
+
+            input:checked + .slider {
+                background-color: #2196F3; /* 토글 ON 색상 */
+            }
+
+            input:focus + .slider {
+                box-shadow: 0 0 1px #2196F3;
+            }
+
+            input:checked + .slider:before {
+                -webkit-transform: translateX(20px);
+                -ms-transform: translateX(20px);
+                transform: translateX(20px);
+            }
+
+            .arrow-icon {
+                margin-left: 5px;
+                color: #ccc;
+            }
+
+            /* Custom Mypage Styles */
+            .mypage-container {
+                max-width: 700px; /* 전체 컨테이너 너비 조정 */
+                margin: 50px auto; /* 상하 여백 및 가운데 정렬 */
+                padding: 20px;
+                font-family: 'Roboto', sans-serif;
+                color: #333;
+            }
+
+            .info-section {
+                background-color: #fff;
+                border: 1px solid #eee;
+                border-radius: 8px;
+                box-shadow: 0 2px 4px rgba(0,0,0,0.05); /* 은은한 그림자 */
+                margin-bottom: 25px; /* 섹션 간 간격 */
+                padding: 20px 30px; /* 좌우 패딩을 늘려 내용이 안쪽으로 들어가게 */
+            }
+
+            .section-title {
+                font-size: 20px;
+                font-weight: 700;
+                margin-bottom: 20px; /* 제목과 항목 간 간격 */
+                color: #333;
+            }
+
+            .info-item {
+                display: flex; /* flexbox 사용 */
+                justify-content: space-between; /* 양 끝 정렬 */
+                align-items: center; /* 세로 가운데 정렬 */
+                padding: 12px 0; /* 상하 패딩 */
+                border-bottom: 1px solid #f0f0f0; /* 항목 간 구분선 */
+                font-size: 15px;
+            }
+
+            .info-item:last-child {
+                border-bottom: none; /* 마지막 항목의 하단선 제거 */
+            }       
+
+            .info-label {
+                color: #555;
+                font-weight: 500;
+                width: 120px; /* 레이블 너비 고정 (필요시 조정) */
+                flex-shrink: 0; /* 레이블이 줄어들지 않도록 */
+            }
+
+            .info-value {
+                text-align: right; /* 기본 우측 정렬 (flex-grow 때문에 내부 텍스트에만 영향) */
+                flex-grow: 1; /* 남은 공간을 차지하여 우측 정렬 */
+                color: #333;
+                display: flex; /* 내부 요소(버튼, 아이콘 등) 정렬을 위해 flexbox 사용 */
+                justify-content: flex-end; /* 값 내부 요소 우측 정렬 */
+                align-items: center; /* 값 내부 요소 세로 가운데 정렬 */
+            }
+
+            .info-value.email-value {
+                font-weight: 500; /* 이메일 값에만 볼드 적용 */
+            }
+
+            .info-value .btn-change {
+                background-color: #fff;
+                border: 1px solid #ddd;
+                color: #555;
+                padding: 4px 10px;
+                border-radius: 4px;
+                font-size: 13px;
+                cursor: pointer;
+                margin-left: 10px; /* 값과의 간격 */
+            }
+
+            .info-value .btn-complete {
+                background-color: #f7f7f7;
+                border: 1px solid #ddd;
+                color: #888;
+                padding: 4px 12px;
+                border-radius: 20px; /* 둥근 버튼 */
+                font-size: 13px;
+                cursor: default; /* 완료 버튼은 클릭 안 되게 */
+            }
+
+            /* 토글 스위치 스타일 */
+            .toggle-switch {
+                position: relative;
+                display: inline-block;
+                width: 40px;
+                height: 20px;
+            }
+
+            .toggle-switch input {
+                opacity: 0;
+                width: 0;
+                height: 0;
+            }
+
+            .slider {       
+                position: absolute;
+                cursor: pointer;
+                top: 0;
+                left: 0;
+                right: 0;
+                bottom: 0;
+                background-color: #ccc;
+                -webkit-transition: .4s;
+                transition: .4s;
+                border-radius: 20px; /* 둥근 슬라이더 */
+            }
+
+            .slider:before {
+                position: absolute;
+                content: "";
+                height: 16px;
+                width: 16px;
+                left: 2px;
+                bottom: 2px;
+                background-color: white;
+                -webkit-transition: .4s;
+                transition: .4s;
+                border-radius: 50%; /* 원형 핸들 */
+            }
+
+            input:checked + .slider {
+                background-color: #2196F3; /* 토글 ON 색상 */
+            }
+
+            input:focus + .slider {
+                box-shadow: 0 0 1px #2196F3;
+            }
+
+            input:checked + .slider:before {
+                -webkit-transform: translateX(20px);
+                -ms-transform: translateX(20px);
+                transform: translateX(20px);
+            }
+
+            .arrow-icon {
+                margin-left: 5px;
+                color: #ccc; /* 화살표 색상 */
+            }
+
+        </style>
+    </head>
+
+    <body>
+        <header id="header">
+            <div class="container-fluid">
+                <div id="logo" class="pull-left">
+                    <a href="index.html"><img src="img/logo.png" alt="Logo" /></a>
+                </div>
+                <nav id="nav-menu-container">
+                    <ul class="nav-menu">
+                        <li><a href="index.html">Home</a></li>
+                        <li><a href="about.html">About</a></li>
+                        <li><a href="speaker.html">Speakers</a></li>
+                        <li><a href="agenda.html">Agenda</a></li>
+                        <li><a href="venue.html">Venue</a></li>
+                        <li><a href="ticket.html">Tickets</a></li>
+                        <li><a href="contact.html">Contact</a></li>
+                        <li class="menu-active"><a href="login.html">Login</a></li>
+                        <li class="menu-active"><a href="MyPage.html">MyPage</a></li>
+                    </ul>
+                </nav>
+            </div>
+        </header>
+        <main class="mypage-container">
+            <section class="info-section">
+                <string class="section-title">계정 정보</string>
+                <div class="info-item">
+                    <span class="info-label">아이디</span>
+                    <span class="info-value email-value">test** <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAABmJLR0QA/wD/AP+gvaeTAAAAu0lEQVQ4jaWSwQnCMBBFnxM0tJ2zEzQ0D7AR3sEGtO7BG3SQs2o6l/2oT+o3/7wH9d2f3/c2qJ+o9iYjD+jA3L+Q4rE1A47pA3+eA9YJ64oN4jJgA2v0u4Q02w1tq74aV9wZfH4f2Jm3hL3bQz9b22V36V8aU8F2D1H/r0d6h98o6+39+6p/A+W9qGfgX6K4aR6d6fG9n60z1nB7tXGj32b5z1y8e69rP39+gB26qG1Fj61t/oAbH2C8gA32F+4W/8LAAAAAElFTkSuQmCC" alt="lock icon" style="width: 14px; height: 14px; margin-left: 5px;"></span>
+                </div>
+                <div class="info-item">
+                    <span class="info-label">이메일</span>
+                    <span class="info-value email-value">test**@test.com</span>
+                </div>
+                <div class="info-item">
+                    <span class="info-label">이름</span>
+                    <span class="info-value">강* <button class="btn-change">변경</button></span>
+                </div>
+                <div class="info-item">
+                    <span class="info-label">휴대폰 번호</span>
+                    <span class="info-value">010-****-6669 <button class="btn-change">변경</button></span>
+                </div>
+                <div class="info-item">
+                    <span class="info-label">본인 인증</span>
+                    <span class="info-value"><button class="btn-complete">완료</button> <i class="fa fa-angle-right arrow-icon"></i></span>
+                </div>
+            </section>
+
+            <section class="info-section">
+                <string class="section-title">로그인 보안</string>
+                <div class="info-item">
+                    <span class="info-label">로그인 이력</span>
+                    <span class="info-value"><i class="fa fa-angle-right arrow-icon"></i></span>
+                </div>
+                <div class="info-item">
+                    <span class="info-label">로그인 알림 <i class="fa fa-question-circle" style="color: #ccc; margin-left: 5px;"></i></span>
+                    <span class="info-value">
+                        <label class="toggle-switch">
+                            <input type="checkbox" checked>
+                            <span class="slider"></span>
+                        </label>
+                    </span>
+                </div>
+            </section>
+
+            <section class="info-section">
+                <string class="section-title">편리한 사용</string>
+                <div class="info-item">
+                    <span class="info-label">간편 로그인 연결</span>
+                    <span class="info-value"><i class="fa fa-angle-right arrow-icon"></i></span>
+                </div>
+            </section>
+        </main>
+        <footer id="footer">
+            <div class="footer-top">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-md-12">
+                            <div class="social-links">
+                                <a href="#" class="twitter"><i class="fa fa-twitter"></i></a>
+                                <a href="#" class="facebook"><i class="fa fa-facebook"></i></a>
+                                <a href="#" class="instagram"><i class="fa fa-instagram"></i></a>
+                                <a href="#" class="google-plus"><i class="fa fa-google-plus"></i></a>
+                                <a href="#" class="linkedin"><i class="fa fa-linkedin"></i></a>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+
+            <div class="container">
+                <div class="copyright">
+                    &copy; Copyright <a href="https://htmlcodex.com">HTML Codex</a>. All Rights Reserved<br>
+                    Template By <a href="https://htmlcodex.com">HTML Codex</a>
+                </div>
+            </div>
+        </footer>
+        <a href="#" class="back-to-top"><i class="fa fa-chevron-up"></i></a>
+        <script src="vendor/jquery/jquery.min.js"></script>
+        <script src="vendor/jquery/jquery-migrate.min.js"></script>
+        <script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+        <script src="vendor/easing/easing.min.js"></script>
+        <script src="vendor/superfish/hoverIntent.js"></script>
+        <script src="vendor/superfish/superfish.min.js"></script>
+        <script src="vendor/waypoints/waypoints.min.js"></script>
+        <script src="vendor/owlcarousel/owl.carousel.min.js"></script>
+        <script src="vendor/touchSwipe/jquery.touchSwipe.min.js"></script>
+
+        <script src="js/main.js"></script>
+
+    </body>
+</html>

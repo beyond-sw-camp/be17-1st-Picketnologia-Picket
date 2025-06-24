@@ -1,0 +1,419 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <title>Tech Conference</title>
+        <meta content="width=device-width, initial-scale=1.0" name="viewport">
+        <meta content="" name="keywords">
+        <meta content="" name="description">
+
+        <!-- Favicons -->
+        <link href="img/favicon.ico" rel="icon">
+        <link href="img/apple-touch-icon.png" rel="apple-touch-icon">
+
+        <!-- Google Fonts -->
+        <link href="https://fonts.googleapis.com/css?family=Roboto+Slab:400,700|Roboto:300,400,500,700,900" rel="stylesheet"> 
+
+        <!-- Bootstrap CSS File -->
+        <link href="vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+
+        <!-- Libraries CSS Files -->
+        <link href="vendor/font-awesome/css/font-awesome.min.css" rel="stylesheet">
+        <link href="vendor/animate/animate.min.css" rel="stylesheet">
+        <link href="vendor/ionicons/css/ionicons.min.css" rel="stylesheet">
+        <link href="vendor/owlcarousel/assets/owl.carousel.min.css" rel="stylesheet">
+
+        <!-- Main Stylesheet File -->
+        <link href="css/style.css" rel="stylesheet">
+    </head>
+    <style>
+        .mypage-wrapper {
+  width: 100%;
+  max-width: 900px;
+  margin: 0 auto;
+  font-family: 'Arial', sans-serif;
+  padding: 20px;
+}
+
+.coupon-event-box {
+  display: flex;
+  justify-content: space-between;
+  gap: 20px;
+  margin-bottom: 30px;
+}
+
+.coupon-box, .event-box {
+  flex: 1;
+  border: 1px solid #ccc;
+  padding: 15px;
+  background-color: #f9f9f9;
+}
+
+.coupon-box h3, .event-box h3 {
+  font-size: 18px;
+  margin-bottom: 10px;
+}
+
+.booking-history {
+  margin-bottom: 50px;
+}
+
+.booking-history h3 {
+  font-size: 20px;
+  margin-bottom: 15px;
+}
+
+.booking-history table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.booking-history th, .booking-history td {
+  border: 1px solid #ccc;
+  padding: 10px;
+  text-align: center;
+}
+
+.booking-history button {
+  padding: 5px 10px;
+  background-color: #333;
+  color: white;
+  border: none;
+  cursor: pointer;
+}
+
+.point-history {
+  margin-bottom: 50px;
+}
+
+.point-history h3 {
+  font-size: 20px;
+  margin-bottom: 15px;
+}
+
+.point-history table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.point-history th, .point-history td {
+  border: 1px solid #ccc;
+  padding: 10px;
+  text-align: center;
+}
+
+.point-history button {
+  padding: 5px 10px;
+  background-color: #333;
+  color: white;
+  border: none;
+  cursor: pointer;
+}
+
+.show-history {
+  margin-bottom: 50px;
+}
+
+.show-history h3 {
+  font-size: 20px;
+  margin-bottom: 15px;
+}
+
+.show-history table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.show-history th, .show-history td {
+  border: 1px solid #ccc;
+  padding: 10px;
+  text-align: center;
+}
+
+.show-history button {
+  padding: 5px 10px;
+  background-color: #333;
+  color: white;
+  border: none;
+  cursor: pointer;
+}
+
+.mypage-bottom {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.point-box, .related-performance, .custom-notification {
+  border: 1px solid #ccc;
+  padding: 15px;
+  background-color: #f9f9f9;
+}
+
+.mypage-bottom h3 {
+  font-size: 18px;
+  margin-bottom: 10px;
+}
+
+.custom-notification {
+  border: 1px solid #ccc;
+  padding: 15px;
+  background-color: #f9f9f9;
+}
+
+.custom-notification table {
+  margin-top: 10px;
+}
+
+.custom-notification .d-flex.align-items-center .ms-2.text-muted {
+    letter-spacing: -1px; /* 원하는 자간 값으로 조절 */
+    text-align: center;
+    flex-grow: 1;
+
+}
+
+    </style>
+
+    <body>
+        <!-- Header Start -->
+        <header id="header">
+            <div class="container-fluid">
+
+                <div id="logo" class="pull-left">
+                    <!-- Uncomment below if you prefer to use text logo -->
+                    <!-- <h1><a href="index.html" class="scrollto">Tech Conference</a></h1> -->
+                    <a href="index.html"><img src="img/logo.png" alt="Logo" /></a>
+                </div>
+
+                <nav id="nav-menu-container">
+                    <ul class="nav-menu">
+                        <li><a href="index.html">Home</a></li>
+                        <li><a href="about.html">About</a></li>
+                        <li><a href="speaker.html">Speakers</a></li>
+                        <li><a href="agenda.html">Agenda</a></li>
+                        <li><a href="venue.html">Venue</a></li>
+                        <li><a href="ticket.html">Tickets</a></li>
+                        <li><a href="contact.html">Contact</a></li>
+                        <li class="menu-active"><a href="login.html">Login</a></li>
+                        <li class="menu-active"><a href="mypage.html">MyPage</a></li>
+                    </ul>
+                </nav>
+            </div>
+        </header>
+        <!-- Header end -->
+
+        <!-- Banner Section Start-->
+        <section class="banner">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-12">
+                        <div class="row">
+                            <div class="col-md-6">
+                                 <h1 class="banner-header">
+                                    My Page
+                                </h1>
+                            </div>
+                            <div class="col-md-6">
+                                 <p class="banner-nav">
+                                    <span class="banner-box">
+                                        <a href="myaccount.html">myaccount</a>
+                                    </span>
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <!-- Banner Section end -->
+         <section class="mypage-wrapper">
+  
+  <!-- 쿠폰/이벤트 박스 -->
+  <div class="coupon-event-box">
+    <div class="coupon-box">
+      <h3>COUPON</h3>
+      <p>공연 할인쿠폰 : 사용가능 0매</p>
+      <p>공연 예매권 : 사용가능 0매</p>
+    </div>
+    <div class="event-box">
+      <h3>EVENT</h3>
+      <ul>
+        <li>뮤지컬 (웨이스트리스) : 연극 할인, 입장 번복 걱정 無</li>
+        <li>뮤지컬 (조선 이야기꾼 김귀수) 관람후기 이벤트</li>
+      </ul>
+    </div>
+  </div>
+
+  <!-- 최근 예매 내역 -->
+  <div class="booking-history">
+    <input type="checkbox" checked disabled class="me-2">
+    <string>최근 예매 내역</string>
+    <table>
+      <thead>
+        <tr>
+          <th>예매일</th>
+          <th>예매번호</th>
+          <th>공연명</th>
+          <th>관람일시</th>
+          <th>매수</th>
+          <th>예매상태</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>2025.06.24</td>
+          <td>Y9364748830</td>
+          <td>2025 연등 페스티벌 국악연주</td>
+          <td>상시</td>
+          <td>1</td>
+          <td><button>예매확인</button></td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <!-- 포인트 및 관련 공연 -->
+
+    <div class="point-history">
+    <input type="checkbox" checked disabled class="me-2">
+    <string>YES포인트 적립내역</string>
+    <table>
+      <thead>
+        <tr>
+          <th>공연명(예매번호)</th>
+          <th>적립일</th>
+          <th>Picket포인트</th>
+          <th>적립상태</th>
+          <th>적립유형</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td> </td>
+          <td> </td>
+          <td>공연 예매로 인한 적립내역이 존재하지 않습니다.</td>
+          <td> </td>
+          <td> </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+    
+
+    <div class="show-history">
+    <input type="checkbox" checked disabled class="me-2">
+    <strong>나의 관람 공연</strong>
+    <table>
+      <thead>
+        <tr>
+          <th>공연명(예매번호)</th>
+          <th>관람일</th>
+          <th>공연장</th>
+          
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td> </td>
+          <td> 나의 관람공연이 없습니다.</td>
+          <td></td>
+          
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+    <div class="custom-notification">
+  <div class="d-flex justify-content-between align-items-center mb-2">
+    <div class="d-flex align-items-center">
+      <input type="checkbox" checked disabled class="me-2">
+      <strong>나의 맞춤 알람 소식</strong>
+      <span class="ms-2 text-muted">최근 1주일 간 업데이트된 맞춤 알람 소식입니다.</span>
+    </div>
+    <button class="btn btn-outline-secondary btn-sm">
+      <i class="fa fa-cog me-1"></i> 나의 맞춤 알람 설정 확인
+    </button>
+  </div>
+
+  <table class="table table-bordered align-middle">
+    <thead class="table-light">
+      <tr>
+        <th style="width: 150px;">티켓오픈알람</th>
+        <th>최근 업데이트 소식이 없습니다.</th>
+      </tr>
+    </thead>
+  </table>
+</div>
+
+</section>
+
+        <!-- Login Section Start -->
+        <section id="login">
+            <div class="container">
+                <div class="section-header">
+                    <h3>My Page AREA</h3>
+                </div>
+                <div class="row">
+                    <div class="col-md-6 form">
+                       
+                    </div>
+                    
+                    <div class="col-md-6 form">
+                        <form>
+                           
+                          
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <!-- Login Section end -->
+
+        <!-- Footer Start -->
+        <footer id="footer">
+            <div class="footer-top">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-md-12">
+                            <div class="social-links">
+                                <a href="#" class="twitter"><i class="fa fa-twitter"></i></a>
+                                <a href="#" class="facebook"><i class="fa fa-facebook"></i></a>
+                                <a href="#" class="instagram"><i class="fa fa-instagram"></i></a>
+                                <a href="#" class="google-plus"><i class="fa fa-google-plus"></i></a>
+                                <a href="#" class="linkedin"><i class="fa fa-linkedin"></i></a>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+
+            <div class="container">
+                <div class="copyright">
+                    &copy; Copyright <a href="https://htmlcodex.com">HTML Codex</a>. All Rights Reserved<br>
+					Template By <a href="https://htmlcodex.com">HTML Codex</a>
+                </div>
+            </div>
+        </footer>
+        <!-- #footer end -->
+
+        <a href="#" class="back-to-top"><i class="fa fa-chevron-up"></i></a>
+        <!-- Uncomment below i you want to use a preloader -->
+        <!-- <div id="preloader"></div> -->
+
+        <!-- JavaScript Libraries -->
+        <script src="vendor/jquery/jquery.min.js"></script>
+        <script src="vendor/jquery/jquery-migrate.min.js"></script>
+        <script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+        <script src="vendor/easing/easing.min.js"></script>
+        <script src="vendor/superfish/hoverIntent.js"></script>
+        <script src="vendor/superfish/superfish.min.js"></script>
+        <script src="vendor/waypoints/waypoints.min.js"></script>
+        <script src="vendor/owlcarousel/owl.carousel.min.js"></script>
+        <script src="vendor/touchSwipe/jquery.touchSwipe.min.js"></script>
+
+        <!-- Main Javascript File -->
+        <script src="js/main.js"></script>
+
+    </body>
+</html>
