@@ -1,0 +1,316 @@
+/* index.html에 연결된 style.css 파일입니다. */
+
+/* --- Global Styles & Light Mode Theme --- */
+@import url('https://fonts.googleapis.com/css2?family=Pretendard:wght@400;500;700&display=swap');
+
+:root {
+    --primary-gradient: linear-gradient(90deg, #4361EE, #7B2CBF);
+    --light-bg: #F8F9FA;
+    --panel-bg: #FFFFFF;
+    --text-primary: #212529;
+    --text-secondary: #6C757D;
+    --border-color: #DEE2E6;
+    --disabled-color: #E9ECEF;
+    --disabled-text-color: #ADB5BD;
+    --border-radius-main: 16px;
+    --border-radius-sub: 10px;
+}
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: 'Pretendard', sans-serif;
+    background-color: var(--light-bg);
+    color: var(--text-primary);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 50px 20px;
+    min-height: 100vh;
+}
+
+@keyframes slide-up {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* --- Layout & Panels --- */
+.container {
+    display: flex;
+    gap: 30px;
+    width: 100%;
+    max-width: 1280px;
+    margin-bottom: 40px;
+    z-index: 1;
+}
+
+.panel {
+    background: var(--panel-bg);
+    border: 1px solid var(--border-color);
+    border-radius: var(--border-radius-main);
+    padding: 35px;
+    animation: slide-up 0.6s ease-out forwards;
+    transition: opacity 0.4s ease, transform 0.4s ease;
+    box-shadow: 0 4px 25px rgba(0, 0, 0, 0.07);
+}
+
+.panel-disabled {
+    opacity: 0.6;
+    pointer-events: none;
+    transform: scale(0.98);
+}
+
+.left-panel {
+    flex: 1.2;
+    animation-delay: 0.1s;
+}
+
+.right-panel {
+    flex: 1;
+    animation-delay: 0.2s;
+}
+
+.panel-title {
+    font-size: 26px;
+    font-weight: 700;
+    margin-bottom: 30px;
+    padding-bottom: 15px;
+    border-bottom: 1px solid var(--border-color);
+}
+
+/* --- Left Panel: Calendar --- */
+.year-month-selector {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 30px;
+    padding: 0 20px;
+}
+
+#currentYearMonth {
+    font-size: 22px;
+    font-weight: 700;
+}
+
+.month-nav-btn {
+    background: none;
+    border: none;
+    color: var(--text-primary);
+    font-size: 28px;
+    cursor: pointer;
+    padding: 5px 15px;
+    border-radius: 50%;
+    transition: background-color 0.2s ease;
+}
+
+.month-nav-btn:hover {
+    background-color: #f1f3f5;
+}
+
+.calendar-grid {
+    display: grid;
+    grid-template-columns: repeat(7, 1fr);
+    gap: 10px;
+    text-align: center;
+}
+
+.calendar-grid div {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    aspect-ratio: 1 / 1;
+    font-size: 15px;
+    font-weight: 500;
+    border-radius: var(--border-radius-sub);
+    cursor: pointer;
+    transition: all 0.2s ease-in-out;
+}
+
+.calendar-header {
+    color: var(--text-secondary);
+    cursor: default !important;
+}
+
+.date-cell:hover:not(.empty-cell):not(.selected) {
+    background-color: #e9ecef;
+    transform: scale(1.05);
+}
+
+.empty-cell,
+.disabled-cell {
+    cursor: default !important;
+    color: var(--disabled-text-color);
+}
+
+.disabled-cell {
+    text-decoration: none;
+}
+
+.selected {
+    background: var(--primary-gradient);
+    color: #fff !important;
+    font-weight: 700;
+    transform: scale(1.1);
+    box-shadow: 0 0 20px rgba(67, 97, 238, 0.5);
+    border-radius: 50%;
+}
+
+/* --- Right Panel: Ticket Selection --- */
+.sub-title {
+    font-size: 18px;
+    font-weight: 700;
+    margin-bottom: 20px;
+    color: var(--text-primary);
+}
+
+.ticket-type-list {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    margin-bottom: 35px;
+}
+
+/* [수정] 티켓 항목 정렬을 위한 Grid 스타일 */
+.ticket-type-item {
+    display: grid;
+    grid-template-columns: 1fr auto auto;
+    align-items: center;
+    gap: 1rem;
+    padding: 12px 18px;
+    /* 패딩 조정 */
+    border: 1px solid var(--border-color);
+    border-radius: var(--border-radius-sub);
+    transition: all 0.3s ease;
+}
+
+.ticket-type-item:hover {
+    border-color: #4361EE;
+}
+
+.ticket-name {
+    font-size: 16px;
+    font-weight: 700;
+}
+
+.ticket-price {
+    color: var(--text-secondary);
+    font-size: 15px;
+    text-align: right;
+}
+
+/* 오른쪽 정렬 추가 */
+.ticket-quantity-select {
+    padding: 8px 12px;
+    border: 1px solid var(--border-color);
+    border-radius: 8px;
+    font-size: 15px;
+    color: var(--text-primary);
+    background-color: #FFFFFF;
+    cursor: pointer;
+}
+
+.total-price-section {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background: #f1f3f5;
+    padding: 20px 25px;
+    border-radius: var(--border-radius-sub);
+    margin-bottom: 30px;
+}
+
+.total-label {
+    font-size: 16px;
+    font-weight: 600;
+}
+
+.total-amount {
+    font-size: 28px;
+    font-weight: 700;
+    background: var(--primary-gradient);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+.select-seat-btn {
+    width: 100%;
+    padding: 22px 0;
+    font-size: 20px;
+    font-weight: 700;
+    color: #fff;
+    background: var(--primary-gradient);
+    border: none;
+    border-radius: 12px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    box-shadow: 0 5px 20px rgba(90, 70, 240, 0.3);
+}
+
+.select-seat-btn:hover:not(:disabled) {
+    transform: translateY(-4px) scale(1.02);
+    box-shadow: 0 10px 25px rgba(90, 70, 240, 0.5);
+}
+
+.select-seat-btn:active:not(:disabled) {
+    transform: translateY(-1px) scale(1);
+}
+
+.select-seat-btn:disabled {
+    background: var(--disabled-color);
+    color: var(--disabled-text-color);
+    box-shadow: none;
+    cursor: not-allowed;
+}
+
+/* --- Notice Section --- */
+.notice-section {
+    width: 100%;
+    max-width: 1280px;
+    background: var(--panel-bg);
+    padding: 30px;
+    border: 1px solid var(--border-color);
+    border-radius: var(--border-radius-main);
+    animation: slide-up 0.6s ease-out 0.3s forwards;
+    box-shadow: 0 4px 25px rgba(0, 0, 0, 0.07);
+}
+
+.notice-section h3 {
+    font-size: 18px;
+    margin-bottom: 15px;
+}
+
+.notice-section ul {
+    list-style: none;
+    padding-left: 0;
+    color: var(--text-secondary);
+}
+
+.notice-section li {
+    position: relative;
+    padding-left: 20px;
+    margin-bottom: 10px;
+    font-size: 14px;
+    line-height: 1.6;
+}
+
+.notice-section li::before {
+    content: '•';
+    position: absolute;
+    left: 0;
+    top: 0;
+    background: var(--primary-gradient);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    font-weight: bold;
+}

@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>관람일/회차 선택 - 코딩 파트너</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <div class="container">
+        <div class="panel left-panel">
+            <h2 class="panel-title">관람일 선택</h2>
+            <div class="date-selection">
+                <div class="year-month-selector">
+                    <button id="prevMonthBtn" class="month-nav-btn">&lt;</button>
+                    <span id="currentYearMonth"></span>
+                    <button id="nextMonthBtn" class="month-nav-btn">&gt;</button>
+                </div>
+                <div class="calendar-grid" id="calendarGrid">
+                </div>
+            </div>
+        </div>
+
+        <div class="panel right-panel" id="rightPanel">
+            <h2 class="panel-title">회차 선택</h2>
+            <div class="session-selection">
+                <p class="sub-title">매수 선택</p>
+                <div class="ticket-type-list">
+                    <div class="ticket-type-item">
+                        <span class="ticket-name">VIP석</span>
+                        <span class="ticket-price" data-price="150000">150,000원</span>
+                        <select class="ticket-quantity-select">
+                            <option value="0">0매</option>
+                            <option value="1">1매</option>
+                            <option value="2">2매</option>
+                            <option value="3">3매</option>
+                            <option value="4">4매</option>
+                            <option value="5">5매</option>
+                        </select>
+                    </div>
+                    <div class="ticket-type-item">
+                        <span class="ticket-name">R석</span>
+                        <span class="ticket-price" data-price="120000">120,000원</span>
+                        <select class="ticket-quantity-select">
+                            <option value="0">0매</option>
+                            <option value="1">1매</option>
+                            <option value="2">2매</option>
+                            <option value="3">3매</option>
+                            <option value="4">4매</option>
+                            <option value="5">5매</option>
+                        </select>
+                    </div>
+                    <div class="ticket-type-item">
+                        <span class="ticket-name">S석</span>
+                        <span class="ticket-price" data-price="90000">90,000원</span>
+                        <select class="ticket-quantity-select">
+                            <option value="0">0매</option>
+                            <option value="1">1매</option>
+                            <option value="2">2매</option>
+                            <option value="3">3매</option>
+                            <option value="4">4매</option>
+                            <option value="5">5매</option>
+                        </select>
+                    </div>
+                    <div class="ticket-type-item">
+                        <span class="ticket-name">A석</span>
+                        <span class="ticket-price" data-price="50000">50,000원</span>
+                        <select class="ticket-quantity-select">
+                            <option value="0">0매</option>
+                            <option value="1">1매</option>
+                            <option value="2">2매</option>
+                            <option value="3">3매</option>
+                            <option value="4">4매</option>
+                            <option value="5">5매</option>
+                        </select>
+                    </div>
+                    <div class="ticket-type-item">
+                        <span class="ticket-name">시야제한석</span>
+                        <span class="ticket-price" data-price="30000">30,000원</span>
+                        <select class="ticket-quantity-select">
+                            <option value="0">0매</option>
+                            <option value="1">1매</option>
+                            <option value="2">2매</option>
+                            <option value="3">3매</option>
+                            <option value="4">4매</option>
+                            <option value="5">5매</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="total-price-section">
+                    <span class="total-label">총 결제금액</span>
+                    <span class="total-amount" id="totalPrice">0원</span>
+                </div>
+                <button class="select-seat-btn" id="submitBtn">좌석선택</button>
+            </div>
+        </div>
+    </div>
+
+    <div class="notice-section">
+        <h3>유의사항</h3>
+        <ul>
+            <li>인쇄되어 있는 좌석은 실제 관람 진행 좌석과 상이할 수 있으니, 자세한 정보는 현장에서 확인하여 주시기 바랍니다.</li>
+            <li>할인권은 자동 선택되지 않으니, 적용받고자 하는 할인의 경우 직접 선택해 주시기 바랍니다.</li>
+            <li>예매 확인 및 변경은 고객센터(1544-1555)로 문의하여 주시기 바랍니다.</li>
+            <li>결제 완료 후 취소 시에는 수수료가 부과될 수 있습니다.</li>
+            <li>현장 구매 시에는 현장 상황에 따라 가격이 변동될 수 있습니다.</li>
+        </ul>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+
+</html>
