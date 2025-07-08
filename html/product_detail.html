@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>상세정보</title>
+
+    <link href="../bootstrap-5.3.7-dist/css/bootstrap.css" rel="stylesheet">
+</head>
+
+<body>
+    <div class="d-flex flex-column gap-5">
+        <!-- header start -->
+        <div class="d-flex flex-column sticky-top">
+            <nav class="navbar bg-body p-2 container-lg">
+                <div class="d-flex gap-2 justify-content-between w-100">
+                    <div class="d-flex w-50">
+                        <a href="./home.html" class="navbar-brand">Picket
+                        </a>
+                        <form class="d-flex w-100" role="search">
+                            <input class="form-control me-2 border border-secondary" type="search"
+                                placeholder="공연을 검색하세요." aria-label="Search" />
+                            <button class="btn btn-light text-nowrap border border-secondary" type="submit">검색</button>
+                        </form>
+                    </div>
+                    <div class="d-flex gap-2 align-items-center">
+                        <a class="link-underline-light link-dark" href="#">로그인</a>
+                        <a class="link-underline-light link-dark" href=" #">내예약</a>
+                    </div>
+                </div>
+            </nav>
+
+            <!-- tab start -->
+            <ul class="nav nav-underline justify-content-center fs-4 border-bottom border-top bg-body-tertiary">
+                <li class="nav-item">
+                    <a class="nav-link active text-black" aria-current="page" href="#">뮤지컬</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link text-black" href="#">콘서트</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link text-black" href="#">전시/행사</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link text-black" aria-disabled="true">아동/가족</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link text-black" aria-disabled="true">연극</a>
+                </li>
+            </ul>
+            <!-- tab end -->
+        </div>
+        <!-- header end -->
+
+        <!-- 상품 이미지, 간단 정보 start -->
+        <div class="container-lg">
+            <div class="d-flex gap-5 justify-content-center">
+                <!-- 이미지 영역 -->
+                <div>
+                    <img src="https://picsum.photos/400/500" class="img-fluid rounded">
+                </div>
+
+                <!-- 공연 정보 영역 -->
+                <div class="d-flex flex-column justify-content-between">
+                    <h2 class="fw-bold">뮤지컬 &lt;지킬 앤 하이드&gt;</h2>
+
+                    <ul class="list-unstyled">
+                        <li class="mb-4"><strong>장소:</strong>충무아트센터 대극장</li>
+                        <li class="mb-4"><strong>공연 기간:</strong> 2024.07.01 ~ 2024.09.30</li>
+                        <li class="mb-4"><strong>공연 시간:</strong> 화~금 19:30 / 토 14:00, 18:00 / 일 15:00</li>
+                        <li class="mb-4"><strong>관람 연령:</strong> 만 13세 이상</li>
+                        <li class="mb-4"><strong>가격:</strong> VIP석 140,000원 / R석 120,000원</li>
+                    </ul>
+
+                    <div class="d-grid">
+                        <button class="btn btn-light btn-lg border" type="button">예매하기</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- 상품 이미지, 간단 정보 end -->
+
+        <!-- 상품 정보 탭 -->
+        <div class="container-lg">
+            <ul class="nav nav-underline justify-content-between">
+                <li class="nav-item">
+                    <a class="nav-link active link-dark" aria-current="page" href="#">상품 소개</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link link-dark" href="#">판매 정보</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link link-dark" href="#">후기</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link link-dark" aria-disabled="true">QnA</a>
+                </li>
+            </ul>
+        </div>
+
+        <!-- 상품 소개 -->
+        <div class="container-lg">
+            <div>
+                <h3 class="card-title mb-3">뮤지컬 <strong>별빛 속으로</strong></h3>
+                <p class="text-muted mb-4">장르: 뮤지컬 | 공연시간: 120분 (인터미션 15분 포함) | 관람등급: 만 12세 이상</p>
+
+                <h5 class="mb-3 border-bottom pb-2">공연 개요</h5>
+                <p>
+                    '별빛 속으로'는 꿈을 잃어버린 한 소녀가 별빛을 따라 떠나는 환상적인 모험을 그린 뮤지컬입니다.<br>
+                    환상적인 무대와 감동적인 음악, 배우들의 열연이 어우러져 관객들에게 희망과 용기를 선사합니다.
+                </p>
+
+                <h5 class="mt-4 mb-3 border-bottom pb-2">출연진</h5>
+                <ul class="list-group list-group-flush mb-4">
+                    <li class="list-group-item px-0">주연: 김하늘, 이민호, 박소담</li>
+                    <li class="list-group-item px-0">조연: 정우성, 한지민</li>
+                    <li class="list-group-item px-0">연출: 김재영</li>
+                </ul>
+
+                <h5 class="mb-3 border-bottom pb-2">줄거리</h5>
+                <p>
+                    도시에 사는 평범한 소녀 수진은 어느 날 우연히 오래된 별 지도를 발견하게 됩니다.<br>
+                    그 별지도를 따라 떠난 여행 속에서 수진은 다양한 인물들과 만나고, 자신이 진정으로 원하는 삶을 찾아가게 됩니다.
+                </p>
+
+                <h5 class="mt-4 mb-3 border-bottom pb-2">관람 포인트</h5>
+                <ul class="list-unstyled">
+                    <li>⭐ 최첨단 영상과 조명이 어우러진 환상적인 무대 연출</li>
+                    <li>⭐ 감성을 자극하는 오리지널 사운드트랙과 라이브 공연</li>
+                    <li>⭐ 관객과 소통하는 배우들의 생생한 연기</li>
+                    <li>⭐ 특별한 깜짝 이벤트와 선물이 공연 중간 제공</li>
+                </ul>
+
+                <h5 class="mt-4 mb-3 border-bottom pb-2 text-danger">유의사항</h5>
+                <ul class="list-unstyled text-muted small">
+                    <li>• 공연 시작 후 입장 시간이 제한됩니다.</li>
+                    <li>• 사진 및 영상 촬영은 엄격히 금지되어 있습니다.</li>
+                    <li>• 어린이 및 휠체어석 관련 별도 문의 바랍니다.</li>
+                    <li>• 티켓 교환 및 환불은 공연 당일 3일 전까지만 가능합니다.</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+    <script src="../bootstrap-5.3.7-dist/js/bootstrap.bundle.js"></script>
+</body>
+
+</html>

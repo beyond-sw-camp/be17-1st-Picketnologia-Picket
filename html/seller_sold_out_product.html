@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>공연 관리</title>
+
+    <link href="../bootstrap-5.3.7-dist/css/bootstrap.css" rel="stylesheet">
+</head>
+
+<body>
+    <div class="container-fluid">
+        <div class="row">
+
+            <!-- Sidebar -->
+            <div class="col-auto col-md-3 col-xl-2 px-sm-2 bg-light">
+                <div class="d-flex flex-column align-items-start px-3 pt-2 min-vh-100">
+                    <h5 class="mb-3">판매자 메뉴</h5>
+                    <ul class="nav nav-pills flex-column mb-auto w-100 gap-2">
+                        <li class="nav-item">
+                            <a href="./seller_dashboard.html"
+                                class="fw-bolder fs-5 link-dark link-underline-light link-underline-opacity-0-hover">대시보드</a>
+                        </li>
+                        <li class="d-flex flex-column gap-2">
+                            <div class="fw-bolder fs-5">공연 관리</div>
+                            <a href="./seller_on_sale_product.html" class="nav-link link-dark"> 진행 중인 공연</a>
+                            <a href="./seller_sold_out_product.html" class="nav-link active"> 종료된 공연</a>
+                        </li>
+                        <li class="nav-item d-flex flex-column gap-2">
+                            <div class="fw-bolder fs-5">예매 관리</div>
+                            <a href="./seller_reservation.html" class="nav-link link-dark">예매 조회 </a>
+                            <a href="./refund_management.html" class="nav-link link-dark"> 환불/취소 </a>
+                        </li>
+                        <li class="nav-item d-flex flex-column gap-2">
+                            <div class="fw-bolder fs-5">고객 커뮤니케이션</div>
+                            <a href="./seller_review.html" class="nav-link link-dark">리뷰</a>
+                            <a href="./seller_qna.html" class="nav-link link-dark">문의</a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="./seller_sales_statistics.html"
+                                class="fw-bolder fs-5 link-dark link-underline-light link-underline-opacity-0-hover">매출
+                                통계</a>
+                        </li>
+
+                        <li class="nav-item">
+                            <a href="#"
+                                class="fw-bolder fs-5 link-danger link-underline-light link-underline-opacity-0-hover">로그
+                                아웃</a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            <!-- end side-bar -->
+
+            <div class="col py-3">
+
+                <div class="d-flex flex-column gap-2 h-100">
+                    <div class="d-flex justify-content-between align-items-center">
+                        <h1 class="fs-4 fw-bolder">종료된 공연</h1>
+
+                        <div class="d-flex align-self-end gap-2 ">
+                            <select class="form-select w-auto">
+                                <option selected>시작일순</option>
+                                <option>종료일순</option>
+                            </select>
+
+                            <input type="text" class="form-control" />
+                            <button class="text-nowrap btn btn-primary">검색</button>
+                        </div>
+                    </div>
+
+                    <div class="flex-fill">
+                        <!-- 공연 목록 테이블 -->
+                        <table class="table table-hover text-center align-middle">
+                            <thead class="table-light">
+                                <tr>
+                                    <th scope="col">번호</th>
+                                    <th scope="col">공연 이름</th>
+                                    <th scope="col">기간</th>
+                                    <th scope="col">장소</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <th scope="row">1</th>
+                                    <td>지킬 앤 하이드</td>
+                                    <td>2025/04/30 ~ 2025/07/30</td>
+                                    <td>세종문화회관</td>
+                                </tr>
+                                <tr>
+                                    <th scope="row">2</th>
+                                    <td>캣</td>
+                                    <td>2025/04/30 ~ 2025/07/30</td>
+                                    <td>세종문화회관</td>
+                                </tr>
+                                <tr>
+                                    <th scope="row">3</th>
+                                    <td>맘마미아</td>
+                                    <td>2025/04/30 ~ 2025/07/30</td>
+                                    <td>세종문화회관</td>
+                                </tr>
+                                <tr>
+                                    <th scope="row">4</th>
+                                    <td>오페라의 유령</td>
+                                    <td>2025/05/01 ~ 2025/08/01</td>
+                                    <td>국립극장</td>
+                                </tr>
+                                <tr>
+                                    <th scope="row">5</th>
+                                    <td>노트르담 드 파리</td>
+                                    <td>2025/05/10 ~ 2025/08/10</td>
+                                    <td>예술의전당</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+
+                    <!-- Pagination -->
+                    <ul class="pagination align-self-center">
+                        <li class="page-item"><a class="page-link" href="#">Previous</a></li>
+                        <li class="page-item"><a class="page-link" href="#">1</a></li>
+                        <li class="page-item"><a class="page-link" href="#">2</a></li>
+                        <li class="page-item"><a class="page-link" href="#">3</a></li>
+                        <li class="page-item"><a class="page-link" href="#">Next</a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="../bootstrap-5.3.7-dist/js/bootstrap.bundle.js"></script>
+</body>
+
+</html>

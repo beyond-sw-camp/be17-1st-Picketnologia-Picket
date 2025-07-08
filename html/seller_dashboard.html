@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>판매자 홈</title>
+
+    <link href="../bootstrap-5.3.7-dist/css/bootstrap.css" rel="stylesheet">
+</head>
+
+<body>
+    <div class="container-fluid">
+        <div class="row">
+
+            <!-- Sidebar -->
+            <div class="col-auto col-md-3 col-xl-2 px-sm-2 bg-light">
+                <div class="d-flex flex-column align-items-start px-3 pt-2 min-vh-100">
+                    <h5 class="mb-3">판매자 메뉴</h5>
+                    <ul class="nav nav-pills flex-column mb-auto w-100 gap-2">
+                        <li class="nav-item">
+                            <a href="./seller_dashboard.html"
+                                class="fw-bolder fs-5 link-underline-light link-underline-opacity-0-hover active nav-link">대시보드</a>
+                        </li>
+                        <li class="d-flex flex-column gap-2">
+                            <div class="fw-bolder fs-5">공연 관리</div>
+                            <a href="./seller_on_sale_product.html" class="nav-link link-dark"> 진행 중인 공연</a>
+                            <a href="./seller_sold_out_product.html" class="nav-link link-dark"> 종료된 공연</a>
+                        </li>
+                        <li class="nav-item d-flex flex-column gap-2">
+                            <div class="fw-bolder fs-5">예매 관리</div>
+                            <a href="./seller_reservation.html" class="nav-link link-dark">예매 조회 </a>
+                            <a href="./refund_management.html" class="nav-link link-dark"> 환불/취소 </a>
+                        </li>
+                        <li class="nav-item d-flex flex-column gap-2">
+                            <div class="fw-bolder fs-5">고객 커뮤니케이션</div>
+                            <a href="./seller_review.html" class="nav-link link-dark">리뷰</a>
+                            <a href="./seller_qna.html" class="nav-link link-dark">문의</a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="./seller_sales_statistics.html"
+                                class="fw-bolder fs-5 link-dark link-underline-light link-underline-opacity-0-hover">매출
+                                통계</a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="#"
+                                class="fw-bolder fs-5 link-danger link-underline-light link-underline-opacity-0-hover">로그
+                                아웃</a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            <!-- end side-bar -->
+
+            <!-- Main Content -->
+            <div class="col py-3">
+                <div>
+                    <h4 class="fw-bolder">통계</h4>
+                    <div class="row row-cols-1 row-cols-md-3 g-4">
+                        <div class="col-md-3">
+                            <div class="card">
+                                <div class="card-body">
+                                    <h5 class="card-title">오늘 판매 티켓</h5>
+                                    <p class="card-text fs-4">128장</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-3">
+                            <div class="card">
+                                <div class="card-body">
+                                    <h5 class="card-title">오늘 매출</h5>
+                                    <p class="card-text fs-4">1,280,000원</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-3">
+                            <div class="card">
+                                <div class="card-body">
+                                    <h5 class="card-title">이번달 매출</h5>
+                                    <p class="card-text fs-4">24,000,000원</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-3">
+                            <div class="card">
+                                <div class="card-body">
+                                    <h5 class="card-title">진행 중인 공연</h5>
+                                    <p class="card-text fs-4">5개</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-3">
+                            <div class="card">
+                                <div class="card-body">
+                                    <h5 class="card-title">이번달 누적 판매 티켓 수</h5>
+                                    <p class="card-text fs-4">200개</p>
+                                </div>
+                            </div>
+                            <div>
+
+                            </div>
+                        </div>
+                        <div class="col-md-3">
+                            <div class="card">
+                                <div class="card-body">
+                                    <h5 class="card-title">이번달 취소/환불 수</h5>
+                                    <p class="card-text fs-4">200개</p>
+                                </div>
+                            </div>
+                            <div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <hr>
+                <div>
+                    <h4 class="fw-bolder text-center">진행 중인 공연</h4>
+                    <table class="table">
+                        <thead>
+                            <tr>
+                                <th scope="col">번호</th>
+                                <th scope="col">공연 이름</th>
+                                <th scope="col">기간</th>
+                                <th scope="col">장소</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <th scope="row">1</th>
+                                <td>지킬 앤 하이드</td>
+                                <td>2025/4/30 ~ 2025/7/30</td>
+                                <td>세종문화회관</td>
+                            </tr>
+                            <tr>
+                                <th scope="row">2</th>
+                                <td>캣</td>
+                                <td>2025/4/30 ~ 2025/7/30</td>
+                                <td>세종문화회관</td>
+                            </tr>
+                            <tr>
+                                <th scope="row">3</th>
+                                <td>맘마미아</td>
+                                <td>2025/4/30 ~ 2025/7/30</td>
+                                <td>세종문화회관</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="../bootstrap-5.3.7-dist/js/bootstrap.bundle.js"></script>
+</body>
+
+</html>
