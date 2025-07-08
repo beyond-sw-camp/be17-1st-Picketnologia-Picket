@@ -1,0 +1,408 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>관리자 대시보드</title>
+    <link href="../bootstrap-5.3.7-dist/css/bootstrap.css" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <style>
+        body {
+            background-color: #f8f9fa;
+        }
+        .dashboard-container {
+            padding: 30px;
+            max-width: 1200px;
+            margin: 30px auto;
+            background-color: #ffffff;
+            border-radius: 8px;
+            box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
+        }
+        .card-header {
+            font-weight: bold;
+            background-color: #007bff;
+            color: white;
+        }
+        .chart-container {
+            margin-top: 20px;
+            margin-bottom: 30px;
+        }
+        table th, table td {
+            text-align: center;
+            vertical-align: middle;
+        }
+    </style>
+</head>
+<body>
+    
+    <div class="dashboard-container">
+        <h2 class="mb-4 text-center">웹 페이지 대시보드</h2>
+
+        <div class="row mb-4 align-items-center">
+            <div class="col-md-3">
+                <label for="metricSelector" class="form-label mb-0">지표 선택:</label>
+            </div>
+            <div class="col-md-5">
+                <select class="form-select" id="metricSelector">
+                    <option value="visitors" selected>총 접속자 수</option>
+                    <option value="pageviews">총 페이지 뷰</option>
+                    <option value="traffic">총 트래픽 (GB)</option>
+                    <option value="avgTime">평균 방문 시간</option>
+                </select>
+            </div>
+        </div>
+
+        <div class="card mb-5">
+            <div class="card-header" id="dailyCardHeader">
+                일별 데이터
+            </div>
+            <div class="card-body">
+                <div class="chart-container">
+                    <canvas id="dailyChart"></canvas>
+                </div>
+                <h5 class="mt-4 mb-3" id="dailyTableTitle">일별 상세 (최근 7일)</h5>
+                <div class="table-responsive">
+                    <table class="table table-striped table-hover">
+                        <thead>
+                            <tr id="dailyTableHeader">
+                                </tr>
+                        </thead>
+                        <tbody id="dailyTableBody">
+                            </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+
+        <div class="card">
+            <div class="card-header" id="hourlyCardHeader">
+                시간대별 데이터 (오늘)
+            </div>
+            <div class="card-body">
+                <div class="chart-container">
+                    <canvas id="hourlyChart"></canvas>
+                </div>
+                <h5 class="mt-4 mb-3" id="hourlyTableTitle">시간대별 상세</h5>
+                <div class="table-responsive">
+                    <table class="table table-striped table-hover">
+                        <thead>
+                            <tr id="hourlyTableHeader">
+                                </tr>
+                        </thead>
+                        <tbody id="hourlyTableBody">
+                            </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="../bootstrap-5.3.7-dist/js/bootstrap.bundle.js"></script>
+    <script>
+        // 전역 차트 인스턴스 (업데이트를 위해)
+        let dailyChartInstance = null;
+        let hourlyChartInstance = null;
+
+        // 1. 더미 데이터 생성 함수 확장
+        // 각 지표에 대한 데이터와 표시 단위를 포함
+        function generateDailyData() {
+            const data = [];
+            for (let i = 6; i >= 0; i--) {
+                const date = new Date();
+                date.setDate(date.getDate() - i);
+                const dateString = date.toLocaleDateString('ko-KR', { year: 'numeric', month: '2-digit', day: '2-digit' });
+                data.push({
+                    date: dateString,
+                    visitors: Math.floor(Math.random() * 2000) + 500, // 500 ~ 2500명
+                    pageviews: Math.floor(Math.random() * 10000) + 2000, // 2000 ~ 12000 페이지 뷰
+                    traffic: (Math.random() * 50).toFixed(2), // 0 ~ 50 GB
+                    avgTime: `${Math.floor(Math.random() * 5) + 1}분 ${Math.floor(Math.random() * 60)}초` // 1분 ~ 5분 59초
+                });
+            }
+            return data;
+        }
+
+        function generateHourlyData() {
+            const data = [];
+            for (let i = 0; i < 24; i++) {
+                const hour = i < 10 ? `0${i}` : `${i}`;
+                data.push({
+                    hour: `${hour}:00 - ${hour}:59`,
+                    visitors: Math.floor(Math.random() * 500) + 50, // 50 ~ 550명
+                    pageviews: Math.floor(Math.random() * 2000) + 100, // 100 ~ 2100 페이지 뷰
+                    traffic: (Math.random() * 10).toFixed(2), // 0 ~ 10 GB
+                    // 시간대별 평균 방문 시간은 일반적으로 구하기 어려우므로 여기서는 포함하지 않거나 단순화
+                });
+            }
+            return data;
+        }
+
+        const dailyAllData = generateDailyData();
+        const hourlyAllData = generateHourlyData();
+
+        // 지표별 설정 객체
+        const metricConfigs = {
+            visitors: {
+                label: '총 접속자 수',
+                unit: '명',
+                dailyType: 'bar',
+                hourlyType: 'line',
+                dailyHeaders: ['날짜', '총 접속자 수', '평균 접속 시간'],
+                dailyRows: (item) => `<td>${item.date}</td><td>${item.visitors.toLocaleString()} 명</td><td>${item.avgTime}</td>`,
+                hourlyHeaders: ['시간대', '접속자 수'],
+                hourlyRows: (item) => `<td>${item.hour}</td><td>${item.visitors.toLocaleString()} 명</td>`
+            },
+            pageviews: {
+                label: '총 페이지 뷰',
+                unit: '회',
+                dailyType: 'bar',
+                hourlyType: 'line',
+                dailyHeaders: ['날짜', '총 페이지 뷰', '평균 페이지 뷰/방문'],
+                dailyRows: (item) => `<td>${item.date}</td><td>${item.pageviews.toLocaleString()} 회</td><td>${(item.pageviews / item.visitors).toFixed(2)} 회</td>`,
+                hourlyHeaders: ['시간대', '페이지 뷰'],
+                hourlyRows: (item) => `<td>${item.hour}</td><td>${item.pageviews.toLocaleString()} 회</td>`
+            },
+            traffic: {
+                label: '총 트래픽',
+                unit: 'GB',
+                dailyType: 'bar',
+                hourlyType: 'line',
+                dailyHeaders: ['날짜', '총 트래픽 (GB)'],
+                dailyRows: (item) => `<td>${item.date}</td><td>${item.traffic} GB</td>`,
+                hourlyHeaders: ['시간대', '트래픽 (GB)'],
+                hourlyRows: (item) => `<td>${item.hour}</td><td>${item.traffic} GB</td>`
+            },
+            avgTime: {
+                label: '평균 방문 시간',
+                unit: '', // 단위는 자체적으로 표시됨
+                dailyType: 'line', // 평균 시간은 선 그래프가 더 적합할 수 있음
+                hourlyType: 'bar', // 시간대별 평균 시간도 막대 그래프가 나을 수 있음
+                dailyHeaders: ['날짜', '평균 방문 시간'],
+                dailyRows: (item) => `<td>${item.date}</td><td>${item.avgTime}</td>`,
+                // 시간대별 평균 방문 시간은 구현 방식에 따라 복잡해질 수 있으므로, 여기서는 간단히 처리하거나 제외 가능
+                hourlyHeaders: ['시간대', '평균 방문 시간 (초)'],
+                // 시간대별 평균 방문 시간은 더미 데이터에서 별도로 계산해야 함.
+                // 여기서는 간단하게 랜덤 값으로 처리하거나, 필요에 따라 구현 방식 변경
+                hourlyRows: (item) => `<td>${item.hour}</td><td>${(Math.random() * 300).toFixed(0)} 초</td>`
+            }
+        };
+
+        // 2. 차트 그리기/업데이트 함수
+        function updateCharts(metric) {
+            const config = metricConfigs[metric];
+            if (!config) return; // 유효하지 않은 지표인 경우
+
+            // 차트 인스턴스 파괴 (새로운 차트 생성을 위해)
+            if (dailyChartInstance) {
+                dailyChartInstance.destroy();
+            }
+            if (hourlyChartInstance) {
+                hourlyChartInstance.destroy();
+            }
+
+            // 일별 차트 데이터 준비
+            const dailyLabels = dailyAllData.map(item => item.date);
+            let dailyDataValues;
+            if (metric === 'avgTime') {
+                // 'N분 M초' 형태의 문자열을 초 단위 숫자로 변환하여 차트에 사용
+                dailyDataValues = dailyAllData.map(item => {
+                    const parts = item.avgTime.match(/(\d+)분 (\d+)초/);
+                    return parseInt(parts[1]) * 60 + parseInt(parts[2]);
+                });
+            } else {
+                dailyDataValues = dailyAllData.map(item => item[metric]);
+            }
+
+            const dailyCtx = document.getElementById('dailyChart').getContext('2d');
+            dailyChartInstance = new Chart(dailyCtx, {
+                type: config.dailyType,
+                data: {
+                    labels: dailyLabels,
+                    datasets: [{
+                        label: `${config.label} (${config.unit})`,
+                        data: dailyDataValues,
+                        backgroundColor: 'rgba(0, 123, 255, 0.7)',
+                        borderColor: 'rgba(0, 123, 255, 1)',
+                        borderWidth: 1,
+                        fill: config.dailyType === 'line' // 선 그래프일 경우 영역 채우기
+                    }]
+                },
+                options: {
+                    responsive: true,
+                    scales: {
+                        y: {
+                            beginAtZero: true,
+                            title: {
+                                display: true,
+                                text: `${config.label} ${metric === 'avgTime' ? '(초)' : `(${config.unit})`}` // 평균 방문 시간은 초 단위로 표시
+                            }
+                        },
+                        x: {
+                            title: {
+                                display: true,
+                                text: '날짜'
+                            }
+                        }
+                    },
+                    plugins: {
+                        tooltip: {
+                            callbacks: {
+                                label: function(context) {
+                                    let label = context.dataset.label || '';
+                                    if (label) {
+                                        label += ': ';
+                                    }
+                                    if (context.parsed.y !== null) {
+                                        if (metric === 'avgTime') {
+                                            const totalSeconds = context.parsed.y;
+                                            const minutes = Math.floor(totalSeconds / 60);
+                                            const seconds = totalSeconds % 60;
+                                            label += `${minutes}분 ${seconds}초`;
+                                        } else {
+                                            label += `${context.parsed.y.toLocaleString()} ${config.unit}`;
+                                        }
+                                    }
+                                    return label;
+                                }
+                            }
+                        }
+                    }
+                }
+            });
+
+            // 시간대별 차트 데이터 준비
+            const hourlyLabels = hourlyAllData.map(item => item.hour.substring(0, 5)); // "HH:00"만 표시
+            let hourlyDataValues;
+            if (metric === 'avgTime') {
+                // 시간대별 평균 방문 시간은 더미 데이터에서 직접 제공되지 않으므로 임의로 생성
+                hourlyDataValues = hourlyAllData.map(() => Math.floor(Math.random() * 300) + 30); // 30 ~ 330초
+            } else {
+                hourlyDataValues = hourlyAllData.map(item => item[metric]);
+            }
+
+            const hourlyCtx = document.getElementById('hourlyChart').getContext('2d');
+            hourlyChartInstance = new Chart(hourlyCtx, {
+                type: config.hourlyType,
+                data: {
+                    labels: hourlyLabels,
+                    datasets: [{
+                        label: `${config.label} (${config.unit})`,
+                        data: hourlyDataValues,
+                        backgroundColor: 'rgba(40, 167, 69, 0.7)',
+                        borderColor: 'rgba(40, 167, 69, 1)',
+                        borderWidth: 2,
+                        fill: config.hourlyType === 'line'
+                    }]
+                },
+                options: {
+                    responsive: true,
+                    scales: {
+                        y: {
+                            beginAtZero: true,
+                            title: {
+                                display: true,
+                                text: `${config.label} ${metric === 'avgTime' ? '(초)' : `(${config.unit})`}`
+                            }
+                        },
+                        x: {
+                            title: {
+                                display: true,
+                                text: '시간대'
+                            }
+                        }
+                    },
+                    plugins: {
+                        tooltip: {
+                            callbacks: {
+                                label: function(context) {
+                                    let label = context.dataset.label || '';
+                                    if (label) {
+                                        label += ': ';
+                                    }
+                                    if (context.parsed.y !== null) {
+                                        if (metric === 'avgTime') {
+                                            const totalSeconds = context.parsed.y;
+                                            const minutes = Math.floor(totalSeconds / 60);
+                                            const seconds = totalSeconds % 60;
+                                            label += `${minutes}분 ${seconds}초`;
+                                        } else {
+                                            label += `${context.parsed.y.toLocaleString()} ${config.unit}`;
+                                        }
+                                    }
+                                    return label;
+                                }
+                            }
+                        }
+                    }
+                }
+            });
+
+            // 3. 테이블 업데이트 함수
+            updateTables(metric);
+
+            // 카드 헤더 및 타이틀 업데이트
+            document.getElementById('dailyCardHeader').textContent = `일별 ${config.label}`;
+            document.getElementById('dailyTableTitle').textContent = `일별 ${config.label} 상세 (최근 7일)`;
+            document.getElementById('hourlyCardHeader').textContent = `시간대별 ${config.label} (오늘)`;
+            document.getElementById('hourlyTableTitle').textContent = `시간대별 ${config.label} 상세`;
+        }
+
+        function updateTables(metric) {
+            const config = metricConfigs[metric];
+            if (!config) return;
+
+            // 일별 테이블 헤더 업데이트
+            const dailyTableHeader = document.getElementById('dailyTableHeader');
+            dailyTableHeader.innerHTML = ''; // 기존 헤더 지우기
+            config.dailyHeaders.forEach(headerText => {
+                const th = document.createElement('th');
+                th.textContent = headerText;
+                dailyTableHeader.appendChild(th);
+            });
+
+            // 일별 테이블 바디 업데이트
+            const dailyTableBody = document.getElementById('dailyTableBody');
+            dailyTableBody.innerHTML = ''; // 기존 데이터 지우기
+            dailyAllData.forEach(item => {
+                const row = dailyTableBody.insertRow();
+                row.innerHTML = config.dailyRows(item); // 설정된 HTML 문자열 삽입
+            });
+
+            // 시간대별 테이블 헤더 업데이트
+            const hourlyTableHeader = document.getElementById('hourlyTableHeader');
+            hourlyTableHeader.innerHTML = ''; // 기존 헤더 지우기
+            config.hourlyHeaders.forEach(headerText => {
+                const th = document.createElement('th');
+                th.textContent = headerText;
+                hourlyTableHeader.appendChild(th);
+            });
+
+            // 시간대별 테이블 바디 업데이트
+            const hourlyTableBody = document.getElementById('hourlyTableBody');
+            hourlyTableBody.innerHTML = ''; // 기존 데이터 지우기
+            hourlyAllData.forEach(item => {
+                const row = hourlyTableBody.insertRow();
+                // 시간대별 평균 방문 시간은 더미 데이터에 없으므로 별도로 처리
+                if (metric === 'avgTime') {
+                    // 더미 데이터 생성 시에는 item.avgTime을 사용하지 않고, 
+                    // 시간대별 평균 방문 시간을 위한 새로운 필드를 추가하거나
+                    // 현재는 간단히 랜덤 값으로 처리
+                    row.innerHTML = `<td>${item.hour}</td><td>${(Math.random() * 300).toFixed(0)} 초</td>`;
+                } else {
+                    row.innerHTML = config.hourlyRows(item);
+                }
+            });
+        }
+
+
+        // 초기 로드 시 'visitors' 지표로 대시보드 렌더링
+        updateCharts('visitors');
+
+        // 드롭다운 변경 이벤트 리스너
+        document.getElementById('metricSelector').addEventListener('change', (event) => {
+            const selectedMetric = event.target.value;
+            updateCharts(selectedMetric);
+        });
+    </script>
+</body>
+</html>
