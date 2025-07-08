@@ -241,156 +241,128 @@
             </div>
         </section>
         <!-- Banner Section end -->
-         <section class="mypage-wrapper">
-  
-  <!-- 쿠폰/이벤트 박스 -->
-  <div class="coupon-event-box">
-    <div class="coupon-box">
-      <h3>COUPON</h3>
-      <p>공연 할인쿠폰 : 사용가능 0매</p>
-      <p>공연 예매권 : 사용가능 0매</p>
-    </div>
-    <div class="event-box">
-      <h3>EVENT</h3>
-      <ul>
-        <li>뮤지컬 (웨이스트리스) : 연극 할인, 입장 번복 걱정 無</li>
-        <li>뮤지컬 (조선 이야기꾼 김귀수) 관람후기 이벤트</li>
-      </ul>
-    </div>
-  </div>
 
-  <!-- 최근 예매 내역 -->
-  <div class="booking-history">
-    <input type="checkbox" checked disabled class="me-2">
-    <string>최근 예매 내역</string>
-    <table>
-      <thead>
-        <tr>
-          <th>예매일</th>
-          <th>예매번호</th>
-          <th>공연명</th>
-          <th>관람일시</th>
-          <th>매수</th>
-          <th>예매상태</th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr>
-          <td>2025.06.24</td>
-          <td>Y9364748830</td>
-          <td>2025 연등 페스티벌 국악연주</td>
-          <td>상시</td>
-          <td>1</td>
-          <td><button>예매확인</button></td>
-        </tr>
-      </tbody>
-    </table>
-  </div>
 
-  <!-- 최근 장바구니 내역 -->
-  <div class="add-cart">
-    <input type="checkbox" checked disabled class="me-2">
-    <string>최근 장바구니 내역</string>
-    <table>
-      <thead>
-        <tr>
-          <th>예매일</th>
-          <th>예매번호</th>
-          <th>공연명</th>
-          <th>관람일시</th>
-          <th>매수</th>
-          <th>예매상태</th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr>
-          <td>2025.06.24</td>
-          <td>Y9364748830</td>
-          <td>2025 연등 페스티벌 국악연주</td>
-          <td>상시</td>
-          <td>1</td>
-          <td><button>예매확인</button></td>
-        </tr>
-      </tbody>
-    </table>
-  </div>
+        <!-- bootstrap start -->
+        <div class="container my-5">
+          <div class="row">
+            <!-- 왼쪽 사이드바 -->
+            <aside class="col-md-3 mb-4">
+              <div class="card">
+                <div class="card-header --bs-body-color">
+                  <strong>MY티켓 | MY PAGE</strong>
+                </div>
+                <div class="card-body">
+                  <p class="mb-1"><strong>강설님은 일반회원입니다.</strong></p>
+                  <ul class="list-unstyled small mb-3">
+                    <li>포인트: 0원</li>
+                    <li>상품권: 0원</li>
+                    <li>예치금: 0원</li>
+                  </ul>
+                  <a href="#" class="btn btn-outline-secondary btn-sm w-100 mb-3">회원정보 수정</a>
+        
+                  <div class="list-group">
+                    <a href="mypage2.html" class="list-group-item list-group-item-action">예매 내역</a>
+                    <a href="mypage3.html" class="list-group-item list-group-item-action active">환불 내역</a>
+                    <a href="mypage4.html" class="list-group-item list-group-item-action">리뷰 및 후기</a>
+                  </div>
+                </div>
+              </div>
+        
+              <div class="card mt-4">
+                <div class="card-body text-center">
+                  <i class="fa fa-phone fa-2x mb-2"></i>
+                  <h5>고객센터</h5>
+                  <p class="mb-1 fs-5 fw-bold">1544-6399</p>
+                  <small>
+                    평일 09:00 ~ 18:00<br>
+                    토요일 09:00 ~ 17:00<br>
+                    일요일/공휴일 휴무
+                  </small>
+                </div>
+              </div>
+            </aside>
+        
+            <!-- 오른쪽 콘텐츠 영역 -->
+            <main class="col-md-9">
+              <h4 class="mb-4">환불 내역 확인</h4>
+        
+              <div class="mb-3 d-flex align-items-center gap-2">
+                <span>조회기간:</span>
+                <input type="date" class="form-control form-control-sm" style="max-width: 150px;">
+                <span>~</span>
+                <input type="date" class="form-control form-control-sm" style="max-width: 150px;">
+                  <button class="btn btn-outline-primary btn-sm">조회</button>
+              </div>
+        
+              <div class="table-responsive">
+                <table class="table table-bordered text-center">
+                  <thead class="table-light">
+                    <tr>
+                      <th>환불 요청일</th>
+                      <th>예매번호</th>
+                      <th>공연명</th>
+                      <th>환불금액</th>
+                      <th>환불 계좌</th>
+                      <th>환불 상태</th>
+                      <th>환불 사유</th>
+                      <th>처리일자</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr>
+                      <td class = "text-center align-middle"><small>2025-07-08</small></td>
+                      <td class="text-center align-middle"><small>Y1234567890</small></td>
+                      <td class="text-center align-middle"><small>뮤지컬 <br>&lt;강철의 심장&gt;</small></td>
+                      <td class="text-center align-middle"><small>59,000원</small></td>
+                      <td class="text-center align-middle"><small>농협 <br>356-1279-2486-83</small></td>
+                      <td class="text-center align-middle"><small>환불 완료</small></td>
+                      <td class="text-center align-middle"><small>고객 요청</small></td>
+                      <td class="text-center align-middle"><small>2025-07-08</small></td>
+                    </tr>
 
-  <!-- 포인트 및 관련 공연 -->
+                    <tr>
+                      <td class="text-center align-middle"><small>2025-07-08</small></td>
+                      <td class="text-center align-middle"><small>Y1234567890</small></td>
+                      <td class="text-center align-middle"><small>뮤지컬 <br>&lt;캣&gt;</small></td>
+                      <td class="text-center align-middle"><small>59,000원</small></td>
+                      <td class="text-center align-middle"><small>농협 <br>356-1279-2486-83</small></td>
+                      <td class="text-center align-middle"><small>환불 대기</small></td>
+                      <td class="text-center align-middle"><small>고객 요청</small></td>
+                      <td class="text-center align-middle"><small>2025-07-08</small></td>
+                    </tr>
 
-    <div class="point-history">
-    <input type="checkbox" checked disabled class="me-2">
-    <string>Picket포인트 적립내역</string>
-    <table>
-      <thead>
-        <tr>
-          <th>공연명(예매번호)</th>
-          <th>적립일</th>
-          <th>Picket포인트</th>
-          <th>적립상태</th>
-          <th>적립유형</th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr>
-          <td> </td>
-          <td> </td>
-          <td>공연 예매로 인한 적립내역이 존재하지 않습니다.</td>
-          <td> </td>
-          <td> </td>
-        </tr>
-      </tbody>
-    </table>
-  </div>
-    
+                    <tr>
+                      <td class="text-center align-middle"><small>2025-07-08</small></td>
+                      <td class="text-center align-middle"><small>Y1234567890</small></td>
+                      <td class="text-center align-middle"><small>뮤지컬 <br>&lt;지킬 앤 하이드&gt;</small></td>
+                      <td class="text-center align-middle"><small>59,000원</small></td>
+                      <td class="text-center align-middle"><small>농협 <br>356-1279-2486-83</small></td>
+                      <td class="text-center align-middle"><small>환불 완료</small></td>
+                      <td class="text-center align-middle"><small>고객 요청</small></td>
+                      <td class="text-center align-middle"><small>2025-07-08</small></td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+        
+              <div class="alert alert-light mt-3 small">
+                <strong>※ 유의사항</strong><br>
+                - 취소 시 예매수수료는 예매일 당일 밤 12시 이전까지 환불됩니다. 그 이후에는 환불되지 않습니다.<br>
+                - 패키지 구성 상품별로 회차와 좌석지정을 해야 공연 관람이 가능합니다.
+              </div>
+            </main>
+          </div>
+        </div>
+        
 
-    <div class="show-history">
-    <input type="checkbox" checked disabled class="me-2">
-    <strong>나의 관람 공연</strong>
-    <table>
-      <thead>
-        <tr>
-          <th>공연명(예매번호)</th>
-          <th>관람일</th>
-          <th>공연장</th>
-          
-        </tr>
-      </thead>
-      <tbody>
-        <tr>
-          <td> </td>
-          <td> 나의 관람공연이 없습니다.</td>
-          <td></td>
-          
-        </tr>
-      </tbody>
-    </table>
-  </div>
 
-    <div class="custom-notification">
-  <div class="d-flex justify-content-between align-items-center mb-2">
-    <div class="d-flex align-items-center">
-      <input type="checkbox" checked disabled class="me-2">
-      <strong>맞춤 알람 소식</strong>
-      <span class="notification-message text-muted">최근 1주일 간 업데이트된 맞춤 알람 소식입니다.</span>
-    </div>
-    <button class="btn btn-outline-secondary btn-sm">
-      <i class="fa fa-cog me-1"></i> 맞춤 알람 설정 확인
-    </button>
-  </div>
 
-  <table class="table table-bordered align-middle">
-    <thead class="table-light">
-      <tr>
-        <th style="width: 150px;">티켓오픈알람</th>
-        <th>최근 업데이트 소식이 없습니다.</th>
-      </tr>
-    </thead>
-  </table>
-</div>
+        <!-- bootstrap end -->
 
-</section>
 
-        <!-- Login Section Start -->
+
+        <!-- Area Section Start -->
         <section id="login">
             <div class="container">
                 <div class="section-header">
@@ -422,8 +394,8 @@
                                 <a href="#" class="facebook"><i class="fa fa-facebook"></i></a>
                                 <a href="#" class="instagram"><i class="fa fa-instagram"></i></a>
                                 <a href="#" class="google-plus"><i class="fa fa-google-plus"></i></a>
-                              </div>
-                              <a href="#" class="linkedin"><i class="fa fa-linkedin"></i></a>
+                                <a href="#" class="linkedin"><i class="fa fa-linkedin"></i></a>
+                            </div>
                         </div>
 
                     </div>
