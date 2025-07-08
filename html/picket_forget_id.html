@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>아이디 찾기</title>
+    <link href="../bootstrap-5.3.7-dist/css/bootstrap.css" rel="stylesheet">
+</head>
+
+<body class="bg-body-tertiary">
+
+    <div class="d-flex align-items-center justify-content-center vh-100">
+        <div class="container">
+            <div class="row justify-content-center">
+                <div class="col-12 col-md-8 col-lg-6 col-xl-5">
+                    <main class="bg-body p-4 p-md-5 rounded-4 shadow">
+                        <form id="findAccountForm">
+                            <div class="text-center mb-4">
+                                <a href="home.html">
+                                    <img src="../img/logo_.png" alt="picket 로고" class="w-50 mb-4">
+                                </a>
+                                <h1 class="h2 fw-bold text-dark mb-3">계정찾기</h1>
+                                <p class="display-12 fw-bold text-uppercase">
+                                    회원 가입시 입력하신 전화번호와 이름을 입력하시면,<br>해당 아이디를 찾아드립니다.
+                                </p>
+                            </div>
+
+                            <div class="form-floating mb-3">
+                                <input type="tel" class="form-control" id="phoneNumber" placeholder="전화번호" required>
+                                <label for="phoneNumber">전화번호</label>
+                            </div>
+
+                            <div class="form-floating mb-3">
+                                <input type="text" class="form-control" id="userName" placeholder="이름" required>
+                                <label for="userName">이름</label>
+                            </div>
+
+                            <div class="d-grid gap-2 d-md-flex justify-content-md-end mt-4">
+                                <a href="home.html" class="btn btn-secondary">취소</a>
+                                <button type="submit" class="btn btn-primary">계정 찾기</button>
+                            </div>
+                        </form>
+                    </main>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="../bootstrap-5.3.7-dist/js/bootstrap.bundle.js"></script>
+    <script>
+        const findAccountForm = document.getElementById('findAccountForm');
+        const phoneNumberInput = document.getElementById('phoneNumber');
+        const userNameInput = document.getElementById('userName');
+
+        findAccountForm.addEventListener('submit', (event) => {
+            event.preventDefault();
+
+            if (phoneNumberInput.value && userNameInput.value) {
+                alert('당신의 이메일은 test@test.com 입니다');
+            } else {
+                alert('전화번호와 이름을 모두 입력해주세요.');
+            }
+        });
+    </script>
+</body>
+
+</html>

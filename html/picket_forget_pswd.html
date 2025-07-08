@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>비밀번호 찾기</title>
+    <link href="../bootstrap-5.3.7-dist/css/bootstrap.css" rel="stylesheet">
+</head>
+
+<body class="bg-body-tertiary">
+
+    <div class="d-flex align-items-center justify-content-center vh-100">
+        <div class="container">
+            <div class="row justify-content-center">
+                <div class="col-12 col-md-8 col-lg-6 col-xl-5">
+                    <main class="bg-body p-4 p-md-5 rounded-4 shadow">
+                        <form id="findPasswordForm">
+
+                            <div class="text-center mb-4">
+                                <a href="home.html">
+                                    <img src="../img/logo_.png" alt="picket 로고" class="w-50 mb-4">
+                                </a>
+                                <h1 class="h2 fw-bold text-dark mb-3">비밀번호 찾기</h1>
+                                <p class="text-secondary small">
+                                    가입하신 이메일 주소를 입력하시고 인증을 완료 하시면,<br>비밀번호 재설정이 가능합니다.
+                                </p>
+                            </div>
+
+                            <div class="input-group mb-3">
+                                <input type="email" class="form-control form-control-lg" id="emailInput"
+                                    placeholder="이메일 주소" required>
+                                <button class="btn btn-outline-secondary" type="button" id="send-code-btn"
+                                    data-bs-toggle="collapse" data-bs-target="#verification-code-section">발송</button>
+                            </div>
+
+                            <div class="collapse mt-3" id="verification-code-section">
+                                <div class="form-floating">
+                                    <input type="text" class="form-control" id="verificationCode" placeholder="인증번호 4자리"
+                                        maxlength="4">
+                                    <label for="verificationCode">인증번호 4자리</label>
+                                </div>
+                            </div>
+
+                            <div id="password-reset-section" class="d-none mt-4">
+                                <hr>
+                                <div class="text-center my-4">
+                                    <h1 class="h4 fw-bold text-dark">비밀번호 재설정</h1>
+                                    <p class="text-secondary small">새로운 비밀번호를 입력해주세요.</p>
+                                </div>
+                                <div class="form-floating mb-3">
+                                    <input type="password" class="form-control" id="password" placeholder="새 비밀번호"
+                                        required>
+                                    <label for="password">새 비밀번호</label>
+                                </div>
+                                <div class="form-floating">
+                                    <input type="password" class="form-control" id="passwordConfirm"
+                                        placeholder="새 비밀번호 확인" required>
+                                    <label for="passwordConfirm">새 비밀번호 확인</label>
+                                </div>
+                                <div id="password-error" class="form-text text-danger d-none">
+                                    비밀번호가 일치하지 않습니다.
+                                </div>
+                            </div>
+
+                            <div class="d-grid gap-2 d-md-flex justify-content-md-end mt-4">
+                                <a href="home.html" class="btn btn-secondary">취소</a>
+                                <button type="button" class="btn btn-primary" id="confirm-btn">확인</button>
+                            </div>
+                        </form>
+                    </main>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="../bootstrap-5.3.7-dist/js/bootstrap.bundle.js"></script>
+    <script>
+        // --- 요소 가져오기 ---
+        const sendCodeBtn = document.getElementById('send-code-btn');
+        const confirmBtn = document.getElementById('confirm-btn');
+        const verificationCodeInput = document.getElementById('verificationCode');
+        const passwordResetSection = document.getElementById('password-reset-section');
+
+        const passwordInput = document.getElementById('password');
+        const passwordConfirmInput = document.getElementById('passwordConfirm');
+        const passwordError = document.getElementById('password-error');
+
+        let isPasswordStep = false;
+
+        // --- '발송' 버튼 클릭: 고정된 alert 메시지만 표시 ---
+        sendCodeBtn.addEventListener('click', () => {
+            alert('인증번호가 발송되었습니다.');
+            sendCodeBtn.disabled = true;
+        });
+
+        // --- '확인' 버튼 클릭: 인증번호 길이 확인 또는 비밀번호 변경 ---
+        confirmBtn.addEventListener('click', () => {
+            if (!isPasswordStep) {
+                // 1단계: 인증번호 길이(4자리) 확인
+                if (verificationCodeInput.value.length === 4) {
+                    alert('인증에 성공했습니다. 새로운 비밀번호를 입력하세요.');
+
+                    // UI 변경: 비밀번호 재설정 영역을 보여줌 (기존 내용은 그대로 둠)
+                    passwordResetSection.classList.remove('d-none');
+
+                    confirmBtn.textContent = '비밀번호 변경';
+                    isPasswordStep = true;
+                } else {
+                    alert('인증번호 4자리를 정확히 입력해주세요.');
+                }
+            } else {
+                // 2단계: 비밀번호 변경
+                if (passwordInput.value && passwordInput.value === passwordConfirmInput.value) {
+                    alert('비밀번호가 성공적으로 변경되었습니다.');
+                } else {
+                    alert('비밀번호를 확인해주세요.');
+                }
+            }
+        });
+
+        // --- 비밀번호 일치 실시간 확인 로직 (이전과 동일) ---
+        function validatePassword() {
+            if (passwordConfirmInput.value && (passwordInput.value !== passwordConfirmInput.value)) {
+                passwordError.classList.remove('d-none');
+            } else {
+                passwordError.classList.add('d-none');
+            }
+        }
+        passwordInput.addEventListener('input', validatePassword);
+        passwordConfirmInput.addEventListener('input', validatePassword);
+    </script>
+</body>
+
+</html>

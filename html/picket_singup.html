@@ -1,0 +1,200 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>picket 회원가입</title>
+    <link href="../bootstrap-5.3.7-dist/css/bootstrap.css" rel="stylesheet">
+</head>
+
+<body class="bg-body-tertiary">
+
+    <div class="container my-5">
+        <div class="row justify-content-center">
+            <div class="col-12 col-md-10 col-lg-8 col-xl-6">
+                <main class="bg-body p-4 p-md-5 rounded-3 shadow">
+                    <div class="text-center mb-4">
+                        <a href="home.html">
+                            <img src="../img/logo_.png" alt="picket 로고" class="w-50 mb-4">
+                        </a>
+                        <h1 class="h3 fw-bold">회원가입</h1>
+                    </div>
+
+                    <form id="signupForm">
+                        <div class="mb-4">
+                            <label class="form-label fw-bold">회원 유형</label>
+                            <div>
+                                <div class="form-check form-check-inline">
+                                    <input class="form-check-input" type="radio" name="userType" id="regularMember"
+                                        value="regular" checked>
+                                    <label class="form-check-label" for="regularMember">일반 회원</label>
+                                </div>
+                                <div class="form-check form-check-inline">
+                                    <input class="form-check-input" type="radio" name="userType" id="sellerMember"
+                                        value="seller">
+                                    <label class="form-check-label" for="sellerMember">판매자 회원</label>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="form-check mb-3">
+                            <input class="form-check-input" type="checkbox" value="" id="termsAgree" required>
+                            <label class="form-check-label" for="termsAgree">
+                                (필수) 서비스 이용약관에 동의합니다.
+                            </label>
+                        </div>
+                        <hr class="mb-4">
+
+                        <div class="row g-3">
+                            <div class="col-md-6">
+                                <div class="form-floating">
+                                    <input type="text" class="form-control" id="nickname" placeholder="닉네임" required>
+                                    <label for="nickname">닉네임</label>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="form-floating">
+                                    <input type="text" class="form-control" id="name" placeholder="이름" required>
+                                    <label for="name">이름</label>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="form-floating">
+                                    <input type="text" class="form-control" id="birthdate" placeholder="생년월일 8자리"
+                                        required>
+                                    <label for="birthdate">생년월일 (예: 19990101)</label>
+                                </div>
+                            </div>
+                            <div class="col-md-6 d-flex align-items-center">
+                                <div class="form-check form-check-inline">
+                                    <input class="form-check-input" type="radio" name="gender" id="genderMale"
+                                        value="male" checked>
+                                    <label class="form-check-label" for="genderMale">남자</label>
+                                </div>
+                                <div class="form-check form-check-inline">
+                                    <input class="form-check-input" type="radio" name="gender" id="genderFemale"
+                                        value="female">
+                                    <label class="form-check-label" for="genderFemale">여자</label>
+                                </div>
+                            </div>
+                            <div class="col-12">
+                                <div class="form-floating">
+                                    <input type="tel" class="form-control" id="phoneNumber" placeholder="전화번호" required>
+                                    <label for="phoneNumber">전화번호</label>
+                                </div>
+                            </div>
+
+                            <div class="col-12">
+                                <label for="email" class="form-label">이메일</label>
+                                <div class="input-group">
+                                    <input type="email" class="form-control" id="email" placeholder="이메일" required>
+                                    <button class="btn btn-outline-secondary" type="button"
+                                        id="email-verification-btn">인증</button>
+                                </div>
+                            </div>
+
+                            <div class="col-12 d-none" id="email-verification-section">
+                                <div class="form-floating mt-2">
+                                    <input type="text" class="form-control" id="email-verification-code"
+                                        placeholder="인증번호 4자리" maxlength="4">
+                                    <label for="email-verification-code">인증번호 4자리</label>
+                                </div>
+                            </div>
+
+                            <div class="col-12">
+                                <div class="form-floating">
+                                    <input type="password" class="form-control" id="password" placeholder="비밀번호"
+                                        required>
+                                    <label for="password">비밀번호</label>
+                                </div>
+                            </div>
+                            <div class="col-12">
+                                <div class="form-floating">
+                                    <input type="password" class="form-control" id="passwordConfirm"
+                                        placeholder="비밀번호 확인" required>
+                                    <label for="passwordConfirm">비밀번호 확인</label>
+                                </div>
+                                <div id="password-error" class="form-text text-danger d-none">
+                                    비밀번호가 일치하지 않습니다.
+                                </div>
+                            </div>
+                        </div>
+
+                        <div id="seller-fields" class="d-none mt-4">
+                            <hr>
+                            <h5 class="my-4 fw-bold">판매자 정보</h5>
+                            <div class="row g-3">
+                                <div class="col-12">
+                                    <div class="form-floating">
+                                        <input type="text" class="form-control" id="representativeName"
+                                            placeholder="대표자 성명">
+                                        <label for="representativeName">대표자 성명</label>
+                                    </div>
+                                </div>
+                                <div class="col-12">
+                                    <div class="form-floating">
+                                        <input type="text" class="form-control" id="businessNumber"
+                                            placeholder="사업자 등록번호">
+                                        <label for="businessNumber">사업자 등록번호</label>
+                                    </div>
+                                </div>
+                                <div class="col-12">
+                                    <div class="form-floating">
+                                        <input type="text" class="form-control" id="businessAddress"
+                                            placeholder="사업장 주소">
+                                        <label for="businessAddress">사업장 주소</label>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="d-grid mt-4">
+                            <button class="btn btn-primary btn-lg" type="submit">회원가입</button>
+                        </div>
+                    </form>
+                </main>
+            </div>
+        </div>
+    </div>
+
+    <script src="../bootstrap-5.3.7-dist/js/bootstrap.bundle.js"></script>
+    <script>
+        // 회원 유형 선택 스크립트
+        document.querySelectorAll('input[name="userType"]').forEach((radio) => {
+            radio.addEventListener('change', (event) => {
+                const sellerFields = document.getElementById('seller-fields');
+                if (event.target.value === 'seller') {
+                    sellerFields.classList.remove('d-none');
+                } else {
+                    sellerFields.classList.add('d-none');
+                }
+            });
+        });
+
+        // 비밀번호 확인 스크립트
+        const passwordInput = document.getElementById('password');
+        const passwordConfirmInput = document.getElementById('passwordConfirm');
+        const passwordError = document.getElementById('password-error');
+        function validatePassword() {
+            if (passwordConfirmInput.value && (passwordInput.value !== passwordConfirmInput.value)) {
+                passwordError.classList.remove('d-none');
+            } else {
+                passwordError.classList.add('d-none');
+            }
+        }
+        passwordInput.addEventListener('input', validatePassword);
+        passwordConfirmInput.addEventListener('input', validatePassword);
+
+        // 이메일 인증 스크립트 추가
+        const emailVerificationBtn = document.getElementById('email-verification-btn');
+        const emailVerificationSection = document.getElementById('email-verification-section');
+        emailVerificationBtn.addEventListener('click', () => {
+            alert('인증번호가 발송되었습니다.');
+            emailVerificationSection.classList.remove('d-none');
+            emailVerificationBtn.disabled = true;
+        });
+    </script>
+</body>
+
+</html>
