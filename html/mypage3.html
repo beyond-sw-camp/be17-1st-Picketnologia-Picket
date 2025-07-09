@@ -262,9 +262,9 @@
                   <a href="#" class="btn btn-outline-secondary btn-sm w-100 mb-3">회원정보 수정</a>
         
                   <div class="list-group">
-                    <a href="mypage2.html" class="list-group-item list-group-item-action">예매 내역</a>
-                    <a href="mypage3.html" class="list-group-item list-group-item-action active">환불 내역</a>
-                    <a href="mypage4.html" class="list-group-item list-group-item-action">리뷰 및 후기</a>
+                    <a href="mypage1.html" class="list-group-item list-group-item-action">예매 내역</a>
+                    <a href="mypage2.html" class="list-group-item list-group-item-action">환불 내역</a>
+                    <a href="mypage3.html" class="list-group-item list-group-item-action active">리뷰 및 후기</a>
                   </div>
                 </div>
               </div>
@@ -285,63 +285,136 @@
         
             <!-- 오른쪽 콘텐츠 영역 -->
             <main class="col-md-9">
-              <h4 class="mb-4">환불 내역 확인</h4>
+              <h4 class="mb-4">리뷰 및 후기 내역 확인</h4>
         
               <div class="mb-3 d-flex align-items-center gap-2">
                 <span>조회기간:</span>
                 <input type="date" class="form-control form-control-sm" style="max-width: 150px;">
                 <span>~</span>
                 <input type="date" class="form-control form-control-sm" style="max-width: 150px;">
-                  <button class="btn btn-outline-primary btn-sm">조회</button>
+                <button class="btn btn-outline-primary btn-sm">조회</button>
               </div>
         
               <div class="table-responsive">
+                <strong class="--bs-body-color p-2 mb-3 d-inline-block">* 리뷰 내역</strong>
                 <table class="table table-bordered text-center">
                   <thead class="table-light">
                     <tr>
-                      <th>환불 요청일</th>
-                      <th>예매번호</th>
+                      <th>작성일시</th>
                       <th>공연명</th>
-                      <th>환불금액</th>
-                      <th>환불 계좌</th>
-                      <th>환불 상태</th>
-                      <th>환불 사유</th>
-                      <th>처리일자</th>
+                      <th>관람일</th>
+                      <th>리뷰 제목</th>
+                      <th>리뷰 내용</th>
+                      <th>별점</th>
+                      <th>공개 여부</th>
                     </tr>
+
+                    
+                  </thead>
+                  <tbody>
+                    <tr>
+                      <td class="text-center align-middle"><small>2025-07-08</small></td>
+                      <td class="text-center align-middle"><small>지킬 앤 하이드</small></td>
+                      <td class="text-center align-middle"><small>2025-07-08</small></td>
+                      <td class="text-center align-middle"><small>리뷰남깁니다.</small></td>
+                      <td class="text-center align-middle"><small>리뷰1</small></td>
+                      <td>
+                        <i class="fa fa-star text-warning"></i>
+                        <i class="fa fa-star text-warning"></i>
+                        <i class="fa fa-star text-warning"></i>
+                        <i class="fa fa-star text-warning"></i>
+                        <i class="fa fa-star-o text-secondary"></i>
+
+                      </td>
+                      <td class="text-center align-middle"><small>공개</small></td>
+                    </tr>
+
+                    <tr>
+                      <td class="text-center align-middle"><small>2025-07-08</small></td>
+                      <td class="text-center align-middle"><small>지킬 앤 하이드</small></td>
+                      <td class="text-center align-middle"><small>2025-07-08</small></td>
+                      <td class="text-center align-middle"><small>리뷰남깁니다.</small></td>
+                      <td class="text-center align-middle"><small>리뷰2</small></td>
+                      <td>
+                        <i class="fa fa-star text-warning"></i>
+                        <i class="fa fa-star text-warning"></i>
+                        <i class="fa fa-star text-warning"></i>
+                        <i class="fa fa-star text-warning"></i>
+                        <i class="fa fa-star-o text-secondary"></i>
+                    
+                      </td>
+                      <td class="text-center align-middle"><small>공개</small></td>
+                    </tr>
+
+                    <tr>
+                      <td class="text-center align-middle"><small>2025-07-08</small></td>
+                      <td class="text-center align-middle"><small>지킬 앤 하이드</small></td>
+                      <td class="text-center align-middle"><small>2025-07-08</small></td>
+                      <td class="text-center align-middle"><small>리뷰남깁니다.</small></td>
+                      <td class="text-center align-middle"><small>리뷰3</small></td>
+                      <td>
+                        <i class="fa fa-star text-warning"></i>
+                        <i class="fa fa-star text-warning"></i>
+                        <i class="fa fa-star text-warning"></i>
+                        <i class="fa fa-star-o text-secondary"></i>
+                        <i class="fa fa-star-o text-secondary"></i>
+                    
+                      </td>
+                      <td class="text-center align-middle"><small>공개</small></td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+
+              <div style="margin-top: 50px;"></div>
+
+              <div class="table-responsive">
+                <strong class="--bs-body-color p-2 mb-3 d-inline-block">* QnA 내역</strong>
+                <table class="table table-bordered text-center">
+                  <thead class="table-light">
+                    <tr>
+                      <th>작성일시</th>
+                      <th>공연명</th>
+                      <th>문의 제목</th>
+                      <th>문의 내용</th>
+                      <th>공개 여부</th>
+                      <th>답변 여부</th>
+                      <th>답변 보기</th>
+                    </tr>
+              
+              
                   </thead>
                   <tbody>
                     <tr>
                       <td class = "text-center align-middle"><small>2025-07-08</small></td>
-                      <td class="text-center align-middle"><small>Y1234567890</small></td>
-                      <td class="text-center align-middle"><small>뮤지컬 <br>&lt;강철의 심장&gt;</small></td>
-                      <td class="text-center align-middle"><small>59,000원</small></td>
-                      <td class="text-center align-middle"><small>농협 <br>356-1279-2486-83</small></td>
-                      <td class="text-center align-middle"><small>환불 완료</small></td>
-                      <td class="text-center align-middle"><small>고객 요청</small></td>
-                      <td class="text-center align-middle"><small>2025-07-08</small></td>
+                      <td class="text-center align-middle"><small>캣</small></td>
+                      <td class="text-center align-middle"><small>문의 납깁니다.</small></td>
+                      <td class="text-center align-middle"><small>문의1</small></td>
+                      <td class="text-center align-middle"><small>공개</small></td>
+                      <td class="text-center align-middle"><small>답변 완료</small></td>
+                      <td><button class="btn btn-outline-dark btn-sm">답변 확인</button></td>
                     </tr>
 
                     <tr>
                       <td class="text-center align-middle"><small>2025-07-08</small></td>
-                      <td class="text-center align-middle"><small>Y1234567890</small></td>
-                      <td class="text-center align-middle"><small>뮤지컬 <br>&lt;캣&gt;</small></td>
-                      <td class="text-center align-middle"><small>59,000원</small></td>
-                      <td class="text-center align-middle"><small>농협 <br>356-1279-2486-83</small></td>
-                      <td class="text-center align-middle"><small>환불 대기</small></td>
-                      <td class="text-center align-middle"><small>고객 요청</small></td>
-                      <td class="text-center align-middle"><small>2025-07-08</small></td>
+                      <td class="text-center align-middle"><small>지킬 앤 하이드</small></td>
+                      <td class="text-center align-middle"><small>문의 납깁니다.</small></td>
+                      <td class="text-center align-middle"><small>문의2</small></td>
+                      <td class="text-center align-middle"><small>공개</small></td>
+                      <td class="text-center align-middle"><small>답변 완료</small></td>
+                      <td><button class="btn btn-outline-dark btn-sm">답변 확인</button></td>
                     </tr>
 
                     <tr>
                       <td class="text-center align-middle"><small>2025-07-08</small></td>
-                      <td class="text-center align-middle"><small>Y1234567890</small></td>
-                      <td class="text-center align-middle"><small>뮤지컬 <br>&lt;지킬 앤 하이드&gt;</small></td>
-                      <td class="text-center align-middle"><small>59,000원</small></td>
-                      <td class="text-center align-middle"><small>농협 <br>356-1279-2486-83</small></td>
-                      <td class="text-center align-middle"><small>환불 완료</small></td>
-                      <td class="text-center align-middle"><small>고객 요청</small></td>
-                      <td class="text-center align-middle"><small>2025-07-08</small></td>
+                      <td class="text-center align-middle"><small>캣</small></td>
+                      <td class="text-center align-middle"><small>문의 납깁니다.</small></td>
+                      <td class="text-center align-middle"><small>문의3</small></td>
+                      <td class="text-center align-middle"><small>공개</small></td>
+                      <td class="text-center align-middle"><small>답변 완료</small></td>
+                      <td><button class="btn btn-outline-dark btn-sm">답변 확인</button></td>
                     </tr>
+
                   </tbody>
                 </table>
               </div>

@@ -262,9 +262,9 @@
                   <a href="#" class="btn btn-outline-secondary btn-sm w-100 mb-3">회원정보 수정</a>
         
                   <div class="list-group">
-                    <a href="mypage2.html" class="list-group-item list-group-item-action">예매 내역</a>
-                    <a href="mypage3.html" class="list-group-item list-group-item-action">환불 내역</a>
-                    <a href="mypage4.html" class="list-group-item list-group-item-action active">리뷰 및 후기</a>
+                    <a href="mypage1.html" class="list-group-item list-group-item-action active">예매 내역</a>
+                    <a href="mypage2.html" class="list-group-item list-group-item-action">환불 내역</a>
+                    <a href="mypage3.html" class="list-group-item list-group-item-action">리뷰 및 후기</a>
                   </div>
                 </div>
               </div>
@@ -285,7 +285,7 @@
         
             <!-- 오른쪽 콘텐츠 영역 -->
             <main class="col-md-9">
-              <h4 class="mb-4">리뷰 및 후기 내역 확인</h4>
+              <h4 class="mb-4">예매 내역 확인</h4>
         
               <div class="mb-3 d-flex align-items-center gap-2">
                 <span>조회기간:</span>
@@ -296,125 +296,60 @@
               </div>
         
               <div class="table-responsive">
-                <strong class="--bs-body-color p-2 mb-3 d-inline-block">* 리뷰 내역</strong>
                 <table class="table table-bordered text-center">
                   <thead class="table-light">
                     <tr>
-                      <th>작성일시</th>
+                      <th>예매일</th>
+                      <th>예매번호</th>
                       <th>공연명</th>
-                      <th>관람일</th>
-                      <th>리뷰 제목</th>
-                      <th>리뷰 내용</th>
-                      <th>별점</th>
-                      <th>공개 여부</th>
-                    </tr>
+                      <th>관람일시</th>
+                      <th>좌석정보</th>
+                      <th>예매수량</th>
+                      <th>예매확인</th>
 
-                    
+                    </tr>
                   </thead>
                   <tbody>
                     <tr>
-                      <td class="text-center align-middle"><small>2025-07-08</small></td>
-                      <td class="text-center align-middle"><small>지킬 앤 하이드</small></td>
-                      <td class="text-center align-middle"><small>2025-07-08</small></td>
-                      <td class="text-center align-middle"><small>리뷰남깁니다.</small></td>
-                      <td class="text-center align-middle"><small>리뷰1</small></td>
-                      <td>
-                        <i class="fa fa-star text-warning"></i>
-                        <i class="fa fa-star text-warning"></i>
-                        <i class="fa fa-star text-warning"></i>
-                        <i class="fa fa-star text-warning"></i>
-                        <i class="fa fa-star-o text-secondary"></i>
+                      <tr>
+                        <td><small>2025-07-08</small></td>
+                        <td><small>Y1234567890</small></td>
+                        <td><small>뮤지컬 &lt;강철의 심장&gt;</small></td>
+                        <td><small>2025-08-01 19:00</small></td>
+                        <td><small>R석 A열 12번</small></td>
+                        <td><small>2매</small></td>
+                        <td><button class="btn btn-outline-dark btn-sm">예매확인</button></td>
+                      </tr>
 
-                      </td>
-                      <td class="text-center align-middle"><small>공개</small></td>
-                    </tr>
+                      <tr>
+                        <td><small>2025-07-08</small></td>
+                        <td><small>Y1234567890</small></td>
+                        <td><small>뮤지컬 &lt;캣&gt;</small></td>
+                        <td><small>2025-08-01 19:00</small></td>
+                        <td><small>R석 A열 12번</small></td>
+                        <td><small>2매</small></td>
+                        <td><button class="btn btn-outline-dark btn-sm">예매확인</button></td>
+                      </tr>
 
-                    <tr>
-                      <td class="text-center align-middle"><small>2025-07-08</small></td>
-                      <td class="text-center align-middle"><small>지킬 앤 하이드</small></td>
-                      <td class="text-center align-middle"><small>2025-07-08</small></td>
-                      <td class="text-center align-middle"><small>리뷰남깁니다.</small></td>
-                      <td class="text-center align-middle"><small>리뷰2</small></td>
-                      <td>
-                        <i class="fa fa-star text-warning"></i>
-                        <i class="fa fa-star text-warning"></i>
-                        <i class="fa fa-star text-warning"></i>
-                        <i class="fa fa-star text-warning"></i>
-                        <i class="fa fa-star-o text-secondary"></i>
-                    
-                      </td>
-                      <td class="text-center align-middle"><small>공개</small></td>
-                    </tr>
+                      <tr>
+                        <td><small>2025-07-08</small></td>
+                        <td><small>Y1234567890</small></td>
+                        <td><small>콘서트 &lt;제임스 블레이크 내한공연&gt;</small></td>
+                        <td><small>2025-08-01 19:00</small></td>
+                        <td><small>R석 A열 12번</small></td>
+                        <td><small>2매</small></td>
+                        <td><button class="btn btn-outline-dark btn-sm">예매확인</button></td>
+                      </tr>
 
-                    <tr>
-                      <td class="text-center align-middle"><small>2025-07-08</small></td>
-                      <td class="text-center align-middle"><small>지킬 앤 하이드</small></td>
-                      <td class="text-center align-middle"><small>2025-07-08</small></td>
-                      <td class="text-center align-middle"><small>리뷰남깁니다.</small></td>
-                      <td class="text-center align-middle"><small>리뷰3</small></td>
-                      <td>
-                        <i class="fa fa-star text-warning"></i>
-                        <i class="fa fa-star text-warning"></i>
-                        <i class="fa fa-star text-warning"></i>
-                        <i class="fa fa-star-o text-secondary"></i>
-                        <i class="fa fa-star-o text-secondary"></i>
-                    
-                      </td>
-                      <td class="text-center align-middle"><small>공개</small></td>
-                    </tr>
-                  </tbody>
-                </table>
-              </div>
-
-              <div style="margin-top: 50px;"></div>
-
-              <div class="table-responsive">
-                <strong class="--bs-body-color p-2 mb-3 d-inline-block">* QnA 내역</strong>
-                <table class="table table-bordered text-center">
-                  <thead class="table-light">
-                    <tr>
-                      <th>작성일시</th>
-                      <th>공연명</th>
-                      <th>문의 제목</th>
-                      <th>문의 내용</th>
-                      <th>공개 여부</th>
-                      <th>답변 여부</th>
-                      <th>답변 보기</th>
-                    </tr>
-              
-              
-                  </thead>
-                  <tbody>
-                    <tr>
-                      <td class = "text-center align-middle"><small>2025-07-08</small></td>
-                      <td class="text-center align-middle"><small>캣</small></td>
-                      <td class="text-center align-middle"><small>문의 납깁니다.</small></td>
-                      <td class="text-center align-middle"><small>문의1</small></td>
-                      <td class="text-center align-middle"><small>공개</small></td>
-                      <td class="text-center align-middle"><small>답변 완료</small></td>
-                      <td><button class="btn btn-outline-dark btn-sm">답변 확인</button></td>
-                    </tr>
-
-                    <tr>
-                      <td class="text-center align-middle"><small>2025-07-08</small></td>
-                      <td class="text-center align-middle"><small>지킬 앤 하이드</small></td>
-                      <td class="text-center align-middle"><small>문의 납깁니다.</small></td>
-                      <td class="text-center align-middle"><small>문의2</small></td>
-                      <td class="text-center align-middle"><small>공개</small></td>
-                      <td class="text-center align-middle"><small>답변 완료</small></td>
-                      <td><button class="btn btn-outline-dark btn-sm">답변 확인</button></td>
-                    </tr>
-
-                    <tr>
-                      <td class="text-center align-middle"><small>2025-07-08</small></td>
-                      <td class="text-center align-middle"><small>캣</small></td>
-                      <td class="text-center align-middle"><small>문의 납깁니다.</small></td>
-                      <td class="text-center align-middle"><small>문의3</small></td>
-                      <td class="text-center align-middle"><small>공개</small></td>
-                      <td class="text-center align-middle"><small>답변 완료</small></td>
-                      <td><button class="btn btn-outline-dark btn-sm">답변 확인</button></td>
-                    </tr>
-
+                      <tr>
+                        <td><small>2025-07-08</small></td>
+                        <td><small>Y1234567890</small></td>
+                        <td><small>뮤지컬 &lt;지킬 앤 하이드&gt;</small></td>
+                        <td><small>2025-08-01 19:00</small></td>
+                        <td><small>R석 A열 12번</small></td>
+                        <td><small>2매</small></td>
+                        <td><button class="btn btn-outline-dark btn-sm">예매확인</button></td>
+                      </tr>
                   </tbody>
                 </table>
               </div>
