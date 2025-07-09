@@ -4,10 +4,10 @@
 		"post": {
 			"event_id": 12345,
 			"user_id": "test1",
-			"rating" : 5,
-			"comment" : "최고의 공연",
-			"create_at" : "yyyy-MM-dd HH:mm:ss",
-			"update_at" : "yyyy-MM-dd HH:mm:ss"
+			"rating": 5,
+			"comment": "최고의 공연",
+			"create_at": "yyyy-MM-dd HH:mm:ss",
+			"update_at": "yyyy-MM-dd HH:mm:ss"
 		}
 	}
 }
