@@ -1,0 +1,37 @@
+{
+    "status": 200,
+    "message": "신고 목록 조회가 완료되었습니다.",
+    "data": {
+      "reports": [
+        {
+          "report_id": 51,
+          "reporter": {
+            "user_id": 12,
+            "username": "착한유저1"
+          },
+          "reported_content": {
+            "type": "REVIEW",
+            "content_id": 205,
+            "preview": "이 공연은 정말 최악이네요. 환불해주세요. @#$%",
+            "author": {
+              "user_id": 14,
+              "username": "악성유저1"
+            }
+          },
+          "related_event": {
+            "event_id": 101,
+            "title": "<지킬 앤 하이드>"
+          },
+          "reason": "욕설 및 비방",
+          "status": "보류",
+          "created_at": "2025-07-09T11:30:00Z"
+        }
+      ],
+      "page_info": {
+        "page": 0,
+        "size": 10,
+        "total_elements": 42,
+        "total_pages": 5
+      }
+    }
+  }
