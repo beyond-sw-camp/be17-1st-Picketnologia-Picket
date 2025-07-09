@@ -1,0 +1,10 @@
+{
+	"products": [
+    {
+      "productId": 789,
+      "name": "뮤지컬 A",
+      "type": "뮤지컬",
+      "region": "서울"
+    }
+  ]
+}

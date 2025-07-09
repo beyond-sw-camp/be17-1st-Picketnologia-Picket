@@ -1,0 +1,44 @@
+{
+  "message": "문의글 목록 조회가 완료되었습니다.",
+  "data": {
+    "qnaList": [
+      {
+        "qnaId": 104,
+        "title": "비밀글입니다. 🔒",
+        "author": {
+          "nickname": "코딩**"
+        },
+        "createdAt": "2025-06-30T22:34:18Z",
+        "status": "답변완료",
+        "isPrivate": true
+      },
+      {
+        "qnaId": 102,
+        "title": "사이즈 관련 문의드립니다.",
+        "author": {
+          "nickname": "패션왕"
+        },
+        "createdAt": "2025-06-29T11:20:05Z",
+        "status": "답변완료",
+        "isPrivate": false
+      },
+      {
+        "qnaId": 99,
+        "title": "재입고 예정 문의",
+        "author": {
+          "nickname": "기다림"
+        },
+        "createdAt": "2025-06-28T18:45:13Z",
+        "status": "답변대기",
+        "isPrivate": false
+      }
+    ],
+    "pageInfo": {
+      "page": 0,
+      "size": 10,
+      "totalElements": 23,
+      "totalPages": 3,
+      "isLast": false
+    }
+  }
+}

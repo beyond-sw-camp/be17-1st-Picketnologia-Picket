@@ -1,0 +1,10 @@
+{
+  "message": "답변이 성공적으로 수정되었습니다.",
+  "data": {
+    "answerId": 56,
+    "inquiryId": 103,
+    "content": "test 내용 수정",
+    "createdAt": "2025-06-30",
+    "updatedAt": "2025-06-31"
+  }
+}

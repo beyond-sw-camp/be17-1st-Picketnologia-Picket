@@ -1,0 +1,12 @@
+{
+	"success": true,
+	"data": {
+		"user": {
+			"id":123,
+			"email":"test01@test.com",
+			"nickname": "닉네임",
+			"role":"custom"
+		},
+		"msg":"로그인 성공"
+	}
+}

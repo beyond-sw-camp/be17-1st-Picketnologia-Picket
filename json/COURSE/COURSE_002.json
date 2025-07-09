@@ -1,0 +1,9 @@
+{
+	"success": true,
+	"data": {
+		"post": {
+			"id": 12345,
+			"title": "등록완료"
+		}
+	}
+}

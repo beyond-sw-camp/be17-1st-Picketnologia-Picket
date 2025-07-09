@@ -1,0 +1,14 @@
+{
+    "message": "문의글이 성공적으로 등록되었습니다.",
+    "data": {
+      "qnaId": 104,
+      "title": "문의2 (비공개)",
+      "author": {
+        "memberId": 12,
+        "nickname": "코딩천재"
+      },
+      "createdAt": "2025-06-30T22:34:18Z",
+      "isPrivate": true,
+      "productId": 15
+    }
+  }

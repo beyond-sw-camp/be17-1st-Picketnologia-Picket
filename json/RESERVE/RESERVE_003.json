@@ -1,0 +1,12 @@
+{
+    "message": "QR코드 정보가 성공적으로 발급되었습니다.",
+  "data": {
+    "ticketId": 808,
+    "qrData": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0aWNrZXRJZCI6ODA4LCJzZWF0SWQiOjc3LCJtZW1iZXJJZCI6MTIsImV4cCI6MTc1MTM4ODAwMH0.SflKxwRJSMeKKF2QT4fwpMeJf36POk6yJV_adQssw5c",
+    "ticketInfo": {
+      "productTitle": "뮤지컬 'asdasd'",
+      "seatInfo": "A열 7번 (VIP)",
+      "viewingDate": "2025-07-05 19:30"
+    }
+  }
+}

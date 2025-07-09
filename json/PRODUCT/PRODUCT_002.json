@@ -1,0 +1,20 @@
+{
+    "productId": 789,
+    "product": "뮤지컬 A",
+    "description": "공연 상세 설명",
+    "reviews": [
+      {
+        "reviewId": 123,
+        "email": "test@test.com",
+        "content": "좋아요",
+        "score": 5
+      }
+    ],
+    "qna": [
+      {
+        "qnaId": 1,
+        "title": "공연 시간은?",
+        "content": "2시간입니다."
+      }
+    ]
+  }

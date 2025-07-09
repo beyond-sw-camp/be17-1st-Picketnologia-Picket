@@ -1,0 +1,17 @@
+{
+    "message": "예매가 생성되었으며, 결제를 대기 중입니다.",
+    "data": {
+      "reservationId": "R-20250630-10A9B2",
+      "status": "PENDING_PAYMENT",
+      "expiresAt": "2025-06-30T22:10:29Z",
+      "reservationDetails": {
+        "showTitle": "뮤지컬 asdasd",
+        "viewingDate": "2025-07-05 18:00",
+        "seats": "VIP석 1매 (A열 7번)"
+      },
+      "paymentInfo": {
+        "amountToPay": 100000,
+        "paymentGatewayOrderId": "pay_ABC123XYZ"
+      }
+    }
+  }

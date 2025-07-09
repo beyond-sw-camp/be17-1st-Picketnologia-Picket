@@ -1,0 +1,10 @@
+{
+  "success": true,
+  "message": "문의글이 성공적으로 수정되었습니다.",
+  "data": {
+      "inquiryId": "문의글 고유ID",
+      "title": "수정된 제목입니다",
+      "content": "문의글 내용 수정 버전",
+      "lastModifiedDate": "2025-06-30" 
+  }
+}

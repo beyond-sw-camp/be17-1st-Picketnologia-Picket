@@ -1,0 +1,879 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <title>티켓 예매 - Tech Conference</title>
+  <meta content="width=device-width, initial-scale=1.0" name="viewport">
+  <meta content="" name="keywords">
+  <meta content="" name="description">
+
+  <link href="../img/favicon.ico" rel="icon">
+  <link href="../img/apple-touch-icon.png" rel="apple-touch-icon">
+
+  <link href="https://fonts.googleapis.com/css?family=Roboto+Slab:400,700|Roboto:300,400,500,700,900" rel="stylesheet">
+
+  <link href="../bootstrap-5.3.7-dist/css/bootstrap.min.css" rel="stylesheet">
+  <link href="../vendor/font-awesome/css/font-awesome.min.css" rel="stylesheet">
+  <link href="../vendor/ionicons/css/ionicons.min.css" rel="stylesheet">
+  <link href="../vendor/owlcarousel/assets/owl.carousel.min.css" rel="stylesheet">
+
+  <link href="../css/style.css" rel="stylesheet">
+
+  <style>
+    /* 커스텀 스타일 (기존 mypage.html에 있던 스타일 포함 및 모달 스텝 관련 추가) */
+    .mypage-wrapper {
+      width: 100%;
+      max-width: 900px;
+      margin: 0 auto;
+      font-family: 'Arial', sans-serif;
+      padding: 20px;
+    }
+
+    .coupon-event-box {
+      display: flex;
+      justify-content: space-between;
+      gap: 20px;
+      margin-bottom: 30px;
+    }
+
+    .coupon-box,
+    .event-box {
+      flex: 1;
+      border: 1px solid #ccc;
+      padding: 15px;
+      background-color: #f9f9f9;
+    }
+
+    .coupon-box h3,
+    .event-box h3 {
+      font-size: 18px;
+      margin-bottom: 10px;
+    }
+
+    .booking-history,
+    .point-history,
+    .show-history {
+      margin-bottom: 50px;
+    }
+
+    .booking-history h3,
+    .point-history h3,
+    .show-history h3 {
+      font-size: 20px;
+      margin-bottom: 15px;
+    }
+
+    .booking-history table,
+    .point-history table,
+    .show-history table {
+      width: 100%;
+      border-collapse: collapse;
+    }
+
+    .booking-history th,
+    .booking-history td,
+    .point-history th,
+    .point-history td,
+    .show-history th,
+    .show-history td {
+      border: 1px solid #ccc;
+      padding: 10px;
+      text-align: center;
+    }
+
+    .booking-history button,
+    .point-history button,
+    .show-history button {
+      padding: 5px 10px;
+      background-color: #333;
+      color: white;
+      border: none;
+      cursor: pointer;
+    }
+
+    .mypage-bottom {
+      display: flex;
+      flex-direction: column;
+      gap: 20px;
+    }
+
+    .point-box,
+    .related-performance,
+    .custom-notification {
+      border: 1px solid #ccc;
+      padding: 15px;
+      background-color: #f9f9f9;
+    }
+
+    .mypage-bottom h3 {
+      font-size: 18px;
+      margin-bottom: 10px;
+    }
+
+    .custom-notification table {
+      margin-top: 10px;
+    }
+
+    .custom-notification .d-flex.align-items-center .ms-2.text-muted {
+      letter-spacing: -1px;
+      text-align: center;
+      flex-grow: 1;
+    }
+
+    .my-account-box {
+      display: inline-block;
+      padding: 5px 10px;
+      border: 1px solid #ccc;
+      color: #333;
+      font-size: 14px;
+      line-height: 1;
+    }
+
+    .notification-message {
+      margin-left: 15px;
+    }
+
+    /* 모달 스텝 인디케이터 스타일 */
+    .step-indicator {
+      padding: 8px 15px;
+      border-radius: 20px;
+      text-align: center;
+      font-size: 0.9em;
+      cursor: pointer;
+      /* 클릭 가능함을 시각적으로 나타냄 */
+    }
+
+    .step-indicator.active {
+      background-color: #007bff;
+      /* Primary color */
+      color: white;
+      font-weight: bold;
+      border-color: #007bff;
+    }
+
+    .step-indicator:not(.active) {
+      background-color: #e9ecef;
+      /* Light gray */
+      color: #495057;
+      border: 1px solid #dee2e6;
+    }
+
+    .step-indicator:hover:not(.active) {
+      background-color: #d6d8db;
+    }
+
+    .step-divider {
+      flex-grow: 1;
+      height: 2px;
+      background-color: #dee2e6;
+      margin: 0 5px;
+      align-self: center;
+    }
+
+    .booking-step {
+      /* 각 스텝 컨텐츠 영역의 패딩 */
+      padding-top: 15px;
+    }
+
+    /* 달력 스타일 */
+    .calendar-container {
+      width: 100%;
+      max-width: 400px;
+      margin: 0 auto;
+      border: 1px solid #dee2e6;
+      border-radius: 5px;
+      padding: 15px;
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.05);
+    }
+
+    .calendar-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 15px;
+      font-size: 1.2em;
+      font-weight: bold;
+    }
+
+    .calendar-header button {
+      background: none;
+      border: none;
+      font-size: 1.5em;
+      cursor: pointer;
+      color: #007bff;
+    }
+
+    .calendar-grid {
+      display: grid;
+      grid-template-columns: repeat(7, 1fr);
+      text-align: center;
+    }
+
+    .calendar-grid div {
+      padding: 8px 0;
+      border-bottom: 1px solid #eee;
+      border-right: 1px solid #eee;
+    }
+
+    .calendar-grid div:nth-child(7n) {
+      border-right: none;
+    }
+
+    .calendar-grid div.day-name {
+      font-weight: bold;
+      background-color: #f8f9fa;
+    }
+
+    .calendar-grid div.day {
+      cursor: pointer;
+      color: #212529;
+    }
+
+    .calendar-grid div.day.prev-month,
+    .calendar-grid div.day.next-month,
+    .calendar-grid div.day.disabled {
+      color: #ced4da;
+      cursor: not-allowed;
+      background-color: #f0f0f0;
+    }
+
+    .calendar-grid div.day.available:hover {
+      background-color: #e2e6ea;
+    }
+
+    .calendar-grid div.day.selected {
+      background-color: #dc3545;
+      /* Red for selected */
+      color: white;
+      font-weight: bold;
+      border-radius: 3px;
+    }
+
+    /* 좌석 이미지 스타일 */
+    .seat-map-container {
+      position: relative;
+      width: 100%;
+      max-width: 700px;
+      /* 이미지의 원본 너비에 맞게 조정 */
+      margin: 0 auto;
+    }
+
+    .seat-map-container img {
+      width: 100%;
+      height: auto;
+      display: block;
+    }
+
+    /* 선택된 좌석에 대한 시각적 피드백 (map area로는 직접 스타일링 불가)
+           -> 대신 스크립트로 선택된 좌석 정보 리스트를 업데이트하는 방식을 사용 */
+  </style>
+</head>
+
+<body class="p-4">
+  <header id="header">
+    <div class="container-fluid">
+      <div id="logo" class="pull-left">
+        <a href="index.html"><img src="../img/logo.png" alt="Logo" /></a>
+      </div>
+      <nav id="nav-menu-container">
+        <ul class="nav-menu">
+          <li><a href="index.html">Home</a></li>
+          <li><a href="about.html">콘서트</a></li>
+          <li><a href="speaker.html">스포츠</a></li>
+          <li><a href="agenda.html">전시/행사</a></li>
+          <li><a href="venue.html">클래식/무용</a></li>
+          <li><a href="ticket.html">아동/가족</a></li>
+          <li><a href="contact.html">연극</a></li>
+          <li><a href="picket_login.html">로그인</a></li>
+          <li><a href="mypage.html">마이페이지</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+  <section class="banner">
+    <div class="container">
+      <div class="row">
+        <div class="col-md-12">
+          <div class="row">
+            <div class="col-md-6">
+              <h1 class="banner-header">My Page</h1>
+            </div>
+            <div class="col-md-6">
+              <p class="banner-nav">
+                <span class="my-account-box"> <a href="myaccount.html">My account</a></span>
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+  <div class="container mt-4">
+    <button class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#bookingModal">예매하기</button>
+  </div>
+
+  <div class="modal fade" id="bookingModal" tabindex="-1" aria-labelledby="bookingModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-xl modal-dialog-scrollable">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="bookingModalLabel">티켓 예매</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="닫기"></button>
+        </div>
+        <div class="modal-body">
+          <div class="d-flex justify-content-center align-items-center mb-4">
+            <div class="col-3">
+              <div class="step-indicator active" id="stepIndicator1" onclick="goToStep(1)">Step 1<br>관람일/회차</div>
+            </div>
+            <div class="step-divider"></div>
+            <div class="col-3">
+              <div class="step-indicator" id="stepIndicator2" onclick="goToStep(2)">Step 2<br>좌석선택</div>
+            </div>
+            <div class="step-divider"></div>
+            <div class="col-3">
+              <div class="step-indicator" id="stepIndicator3" onclick="goToStep(3)">Step 3<br>결제하기</div>
+            </div>
+          </div>
+
+          <div class="container-fluid">
+            <div id="step1" class="booking-step">
+              <h4 class="mb-3">관람일 및 회차 선택</h4>
+              <div class="row">
+                <div class="col-md-6">
+                  <h5 class="mb-3">관람일 선택</h5>
+                  <div class="calendar-container">
+                    <div class="calendar-header">
+                      <button id="prevMonthBtn">&lt;</button>
+                      <span id="currentMonthYear"></span>
+                      <button id="nextMonthBtn">&gt;</button>
+                    </div>
+                    <div class="calendar-grid" id="calendarGrid">
+                      <div class="day-name">일</div>
+                      <div class="day-name">월</div>
+                      <div class="day-name">화</div>
+                      <div class="day-name">수</div>
+                      <div class="day-name">목</div>
+                      <div class="day-name">금</div>
+                      <div class="day-name">토</div>
+                    </div>
+                  </div>
+                  <p class="text-muted mt-2 small">
+                    <span class="badge bg-danger me-1">빨간색</span>: 선택 날짜,
+                    <span class="badge bg-secondary me-1">회색</span>: 예매 불가
+                  </p>
+                </div>
+                <div class="col-md-6">
+                  <h5 class="mb-3">회차 선택</h5>
+                  <div id="timeslotContainer">
+                    <p class="text-muted">날짜를 선택해주세요.</p>
+                  </div>
+                </div>
+              </div>
+              <div class="d-flex justify-content-end mt-4">
+                <button class="btn btn-primary" onclick="nextStep()">다음 단계</button>
+              </div>
+            </div>
+
+            <div id="step2" class="booking-step" style="display: none;">
+              <h4 class="mb-3">좌석 선택</h4>
+              <div class="row">
+                <div class="col-md-8">
+                  <div class="seat-map-container">
+                    <img src="../img/stage_map_example.png" usemap="#seatMap" alt="좌석 배치도">
+                    <map name="seatMap" id="seatMap">
+                      <area shape="rect" coords="200,100,220,120" href="#" class="seat-area" data-seat-name="R-A1"
+                        data-seat-type="R" data-seat-price="66000" alt="R-A1">
+                      <area shape="rect" coords="225,100,245,120" href="#" class="seat-area" data-seat-name="R-A2"
+                        data-seat-type="R" data-seat-price="66000" alt="R-A2">
+                      <area shape="rect" coords="200,200,220,220" href="#" class="seat-area" data-seat-name="S-C1"
+                        data-seat-type="S" data-seat-price="44000" alt="S-C1">
+                      <area shape="rect" coords="225,200,245,220" href="#" class="seat-area" data-seat-name="S-C2"
+                        data-seat-type="S" data-seat-price="44000" alt="S-C2">
+                    </map>
+                  </div>
+                  <p class="text-muted mt-3 text-center">클릭하여 좌석을 선택/해제하세요.</p>
+                </div>
+                <div class="col-md-4">
+                  <h5>좌석 등급/가격</h5>
+                  <ul class="list-group mb-3">
+                    <li class="list-group-item d-flex justify-content-between align-items-center">
+                      <span class="badge bg-info me-2">R</span> R석 66,000원
+                    </li>
+                    <li class="list-group-item d-flex justify-content-between align-items-center">
+                      <span class="badge bg-success me-2">S</span> S석 44,000원
+                    </li>
+                  </ul>
+                  <h5>선택한 좌석 (<span id="selectedSeatCount">0</span>매)</h5>
+                  <ul class="list-group mb-3" id="selectedSeatsList">
+                    <li class="list-group-item text-muted">선택된 좌석이 없습니다.</li>
+                  </ul>
+                </div>
+              </div>
+              <div class="d-flex justify-content-between mt-3">
+                <button class="btn btn-secondary" onclick="prevStep()">이전 단계</button>
+                <button class="btn btn-primary" onclick="nextStep()">다음 단계</button>
+              </div>
+            </div>
+
+            <div id="step3" class="booking-step" style="display: none;">
+              <h4 class="mb-3">수령 방법</h4>
+              <div class="row mb-4">
+                <div class="col-auto">
+                    <div class="form-check">
+                        <input class="form-check-input" type="radio" name="deliveryMethod" id="deliveryOnSite" value="on-site" checked>
+                        <label class="form-check-label" for="deliveryOnSite">현장 수령</label>
+                    </div>
+                </div>
+                <div class="col-auto">
+                    <div class="form-check">
+                        <input class="form-check-input" type="radio" name="deliveryMethod" id="deliveryQrCode" value="qr-code"> 
+                        <label class="form-check-label" for="deliveryQrCode">QR코드</label>
+                    </div>
+                </div>
+            </div>
+
+              <div class="mb-3">
+                <div class="input-group">
+                  <p><input type="text" class="form-control" id="couponCode" placeholder="이름"></p>
+                  <p><input type="text" class="form-control" id="couponCode" placeholder="긴급 연락처"></p>
+                  <p><input type="text" class="form-control" id="couponCode" placeholder="e-mail"></p>
+                  
+                </div>
+
+              <h5 class="mt-4">결제 수단 선택</h5>
+              <div class="mb-4">
+                <select class="form-select" id="paymentMethod">
+                  <option selected>카드 결제</option>
+                  <option>무통장 입금</option>
+                  <option>간편 결제 (카카오페이, 네이버페이 등)</option>
+                </select>
+              </div>
+
+              <ul class="list-group mb-3">
+                <li class="list-group-item d-flex justify-content-between align-items-center">
+                  <span>티켓금액</span><span id="ticketAmount">0원</span>
+                </li>
+                <li class="list-group-item d-flex justify-content-between align-items-center">
+                  <span>예매 수수료</span><span id="feeAmount">0원</span>
+                </li>
+                <li class="list-group-item d-flex justify-content-between align-items-center">
+                  <span>할인 금액</span><span id="discountAmount">0원</span>
+                </li>
+                <li class="list-group-item d-flex justify-content-between align-items-center bg-light">
+                  <strong>총 결제금액</strong><strong class="text-danger fs-5" id="totalPaymentAmount">0원</strong>
+                </li>
+              </ul>
+
+              <div class="d-flex justify-content-between mt-3">
+                <button class="btn btn-secondary" onclick="prevStep()">이전 단계</button>
+                <button class="btn btn-success">결제하기</button>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="modal-footer d-block text-start bg-light p-3">
+          <h5 class="mb-3">예매 요약</h5>
+          <div class="row">
+            <div class="col-md-6">
+              <h6>선택 내역</h6>
+              <ul class="list-unstyled small">
+                <li>**관람일:** <span id="summaryDate">선택 안 됨</span></li>
+                <li>**회차:** <span id="summaryTime">선택 안 됨</span></li>
+                <li>**매수:** <span id="summaryQuantity">0 매</span></li>
+                <li>**좌석:** <span id="summarySeat">선택 안 됨</span></li>
+              </ul>
+            </div>
+            <div class="col-md-6">
+              <h6>결제 내역</h6>
+              <ul class="list-unstyled small">
+                <li>**티켓금액:** <span id="summaryTicketPrice">0</span>원</li>
+                <li>**예매수수료:** <span id="summaryFee">0</span>원</li>
+                <li>**배송료:** <span id="summaryDeliveryFee">0</span>원</li>
+                <li>**총액(+):** <span id="summaryGrossTotal">0</span>원</li>
+                <li>**할인금액:** <span id="summaryDiscount">0</span>원</li>
+                <li>**최종 결제금액:** <span class="text-danger fw-bold" id="finalPaymentAmount">0</span>원</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <footer id="footer">
+    <div class="footer-top">
+      <div class="container">
+        <div class="row">
+          <div class="col-md-12">
+            <div class="social-links">
+              <a href="#" class="twitter"><i class="fa fa-twitter"></i></a>
+              <a href="#" class="facebook"><i class="fa fa-facebook"></i></a>
+              <a href="#" class="instagram"><i class="fa fa-instagram"></i></a>
+              <a href="#" class="google-plus"><i class="fa fa-google-plus"></i></a>
+              <a href="#" class="linkedin"><i class="fa fa-linkedin"></i></a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="container">
+      <div class="copyright">
+        &copy; Copyright <a href="https://htmlcodex.com">HTML Codex</a>. All Rights Reserved<br>
+        Template By <a href="https://htmlcodex.com">HTML Codex</a>
+      </div>
+    </div>
+  </footer>
+  <a href="#" class="back-to-top"><i class="fa fa-chevron-up"></i></a>
+
+  <script src="../bootstrap-5.3.7-dist/js/bootstrap.bundle.min.js"></script>
+  <script src="../vendor/jquery/jquery.min.js"></script>
+  <script src="../vendor/jquery/jquery-migrate.min.js"></script>
+  <script src="../vendor/easing/easing.min.js"></script>
+  <script src="../vendor/superfish/hoverIntent.js"></script>
+  <script src="../vendor/superfish/superfish.min.js"></script>
+  <script src="../vendor/waypoints/waypoints.min.js"></script>
+  <script src="../vendor/owlcarousel/owl.carousel.min.js"></script>
+  <script src="../vendor/touchSwipe/jquery.touchSwipe.min.js"></script>
+
+  <script src="../js/main.js"></script>
+
+  <script>
+    let currentStep = 1;
+    const totalSteps = 3;
+    let selectedDate = null; // 선택된 날짜 (Date 객체)
+    let selectedTime = null; // 선택된 회차 (문자열)
+    let selectedSeats = []; // 선택된 좌석 정보 배열
+    let totalTicketPrice = 0; // 총 티켓 금액
+
+    // === 달력 및 날짜/회차 선택 관련 변수 및 함수 ===
+    let currentCalendarDate = new Date(); // 현재 달력에 표시되는 월
+    const availableDates = [ // 예매 가능한 날짜 (년-월-일)
+      '2025-07-08', '2025-07-09', '2025-07-10', '2025-07-15', '2025-07-20'
+    ];
+    const timeslotData = { // 날짜별 회차 데이터
+      '2025-07-08': [{ time: '14:00', label: '[1회] 14:00' }, { time: '19:00', label: '[2회] 19:00' }],
+      '2025-07-09': [{ time: '16:00', label: '[1회] 16:00' }, { time: '20:00', label: '[2회] 20:00' }],
+      '2025-07-10': [{ time: '18:00', label: '[1회] 18:00' }],
+      '2025-07-15': [{ time: '15:00', label: '[1회] 15:00' }],
+      '2025-07-20': [{ time: '17:00', label: '[1회] 17:00' }]
+    };
+
+    function renderCalendar(date) {
+      const calendarGrid = document.getElementById('calendarGrid');
+      const currentMonthYear = document.getElementById('currentMonthYear');
+      calendarGrid.innerHTML = `
+                <div class="day-name">일</div>
+                <div class="day-name">월</div>
+                <div class="day-name">화</div>
+                <div class="day-name">수</div>
+                <div class="day-name">목</div>
+                <div class="day-name">금</div>
+                <div class="day-name">토</div>
+            `; // 요일 헤더 초기화
+
+      const year = date.getFullYear();
+      const month = date.getMonth(); // 0-11
+      currentMonthYear.textContent = `${year}년 ${month + 1}월`;
+
+      const firstDayOfMonth = new Date(year, month, 1).getDay(); // 0(일) - 6(토)
+      const daysInMonth = new Date(year, month + 1, 0).getDate(); // 현재 월의 마지막 날짜
+
+      // 이전 달의 날짜 채우기
+      for (let i = 0; i < firstDayOfMonth; i++) {
+        calendarGrid.innerHTML += `<div class="day prev-month"></div>`;
+      }
+
+      // 현재 달의 날짜 채우기
+      for (let day = 1; day <= daysInMonth; day++) {
+        const fullDate = `${year}-${String(month + 1).padStart(2, '0')}-${String(day).padStart(2, '0')}`;
+        let className = 'day';
+        let isAvailable = availableDates.includes(fullDate);
+        if (!isAvailable) {
+          className += ' disabled';
+        } else {
+          className += ' available';
+        }
+
+        if (selectedDate && selectedDate.getFullYear() === year && selectedDate.getMonth() === month && selectedDate.getDate() === day) {
+          className += ' selected';
+        }
+
+        const dayDiv = document.createElement('div');
+        dayDiv.className = className;
+        dayDiv.textContent = day;
+        if (isAvailable) {
+          dayDiv.dataset.fullDate = fullDate;
+          dayDiv.addEventListener('click', () => selectDate(new Date(year, month, day), fullDate));
+        }
+        calendarGrid.appendChild(dayDiv);
+      }
+    }
+
+    function selectDate(dateObj, fullDate) {
+      // 기존 선택된 날짜의 스타일 제거
+      const prevSelected = document.querySelector('.calendar-grid .day.selected');
+      if (prevSelected) {
+        prevSelected.classList.remove('selected');
+      }
+
+      // 새로운 날짜 선택 및 스타일 적용
+      selectedDate = dateObj;
+      const currentSelected = document.querySelector(`.calendar-grid div[data-full-date="${fullDate}"]`);
+      if (currentSelected) {
+        currentSelected.classList.add('selected');
+      }
+
+      // 회차 정보 로드
+      loadTimeslots(fullDate);
+      updateSummary();
+    }
+
+    function loadTimeslots(fullDate) {
+      const timeslotContainer = document.getElementById('timeslotContainer');
+      timeslotContainer.innerHTML = '';
+      const timeslots = timeslotData[fullDate] || [];
+
+      if (timeslots.length > 0) {
+        const selectElement = document.createElement('select');
+        selectElement.className = 'form-select';
+        selectElement.id = 'timeSelect';
+        selectElement.addEventListener('change', (event) => {
+          selectedTime = event.target.value;
+          updateSummary();
+        });
+
+        timeslots.forEach(slot => {
+          const option = document.createElement('option');
+          option.value = slot.time;
+          option.textContent = slot.label;
+          selectElement.appendChild(option);
+        });
+        timeslotContainer.appendChild(selectElement);
+        // 첫 번째 회차 기본 선택
+        selectedTime = timeslots[0].time;
+      } else {
+        timeslotContainer.innerHTML = '<p class="text-muted">해당 날짜에 예매 가능한 회차가 없습니다.</p>';
+        selectedTime = null;
+      }
+      updateSummary();
+    }
+
+    // === 스텝 전환 함수 ===
+    function goToStep(stepNumber) {
+      document.querySelectorAll('.booking-step').forEach(step => {
+        step.style.display = 'none';
+      });
+
+      const targetStep = document.getElementById(`step${stepNumber}`);
+      if (targetStep) {
+        targetStep.style.display = 'block';
+      }
+
+      document.querySelectorAll('[id^="stepIndicator"]').forEach((indicator, index) => {
+        if (index + 1 === stepNumber) {
+          indicator.classList.add('active');
+        } else {
+          indicator.classList.remove('active');
+        }
+      });
+
+      currentStep = stepNumber;
+
+      const modalBody = document.querySelector('#bookingModal .modal-body');
+      if (modalBody) {
+        modalBody.scrollTop = 0;
+      }
+
+      updateSummary(); // 스텝 변경 시 요약 정보 업데이트
+    }
+
+    function nextStep() {
+      if (currentStep === 1) {
+        if (!selectedDate || !selectedTime) {
+          alert('관람일과 회차를 모두 선택해주세요.');
+          return;
+        }
+      } else if (currentStep === 2) {
+        if (selectedSeats.length === 0) {
+          alert('좌석을 한 개 이상 선택해주세요.');
+          return;
+        }
+      }
+
+      if (currentStep < totalSteps) {
+        goToStep(currentStep + 1);
+      } else {
+        alert('결제를 진행합니다!');
+      }
+    }
+
+    function prevStep() {
+      if (currentStep > 1) {
+        goToStep(currentStep - 1);
+      }
+    }
+
+    // === 좌석 선택 로직 (포도알 예매형) ===
+    // 선택된 좌석에 대한 시각적 피드백은 이미지 맵 자체에 적용하기 어려움.
+    // 대신 선택된 좌석 목록 UI를 업데이트하여 피드백 제공.
+    document.addEventListener('DOMContentLoaded', function () {
+      const seatAreas = document.querySelectorAll('.seat-area');
+      const selectedSeatsList = document.getElementById('selectedSeatsList');
+      const selectedSeatCount = document.getElementById('selectedSeatCount');
+
+      seatAreas.forEach(area => {
+        area.addEventListener('click', function (event) {
+          event.preventDefault(); // 기본 링크 이동 방지
+          const seatName = this.dataset.seatName;
+          const seatType = this.dataset.seatType;
+          const seatPrice = parseInt(this.dataset.seatPrice);
+
+          const existingSeatIndex = selectedSeats.findIndex(seat => seat.name === seatName);
+
+          if (existingSeatIndex === -1) {
+            // 선택되지 않은 좌석 -> 선택
+            selectedSeats.push({ name: seatName, type: seatType, price: seatPrice });
+            // 여기에 선택된 좌석 이미지 변경 등 시각적 피드백 로직 추가 가능 (SVG 또는 Canvas 이용 시)
+            // 현재는 map area이므로 직접 스타일링 불가, 대신 목록 업데이트
+            console.log(`${seatName} 선택됨.`);
+          } else {
+            // 이미 선택된 좌석 -> 선택 해제
+            selectedSeats.splice(existingSeatIndex, 1);
+            console.log(`${seatName} 선택 해제됨.`);
+          }
+          updateSelectedSeatsUI();
+          updateSummary();
+        });
+      });
+
+      function updateSelectedSeatsUI() {
+        selectedSeatsList.innerHTML = '';
+        if (selectedSeats.length === 0) {
+          selectedSeatsList.innerHTML = '<li class="list-group-item text-muted">선택된 좌석이 없습니다.</li>';
+        } else {
+          selectedSeats.forEach(seat => {
+            const li = document.createElement('li');
+            li.classList.add('list-group-item');
+            li.textContent = `${seat.type} ${seat.name} (${seat.price.toLocaleString()}원)`;
+            selectedSeatsList.appendChild(li);
+          });
+        }
+        selectedSeatCount.textContent = selectedSeats.length;
+      }
+    });
+
+
+    // === 예매 요약 정보 업데이트 함수 ===
+    function updateSummary() {
+      const summaryDateElem = document.getElementById('summaryDate');
+      const summaryTimeElem = document.getElementById('summaryTime');
+      const summaryQuantityElem = document.getElementById('summaryQuantity');
+      const summarySeatElem = document.getElementById('summarySeat');
+
+      const ticketAmountElem = document.getElementById('ticketAmount');
+      const feeAmountElem = document.getElementById('feeAmount');
+      const discountAmountElem = document.getElementById('discountAmount');
+      const totalPaymentAmountElem = document.getElementById('totalPaymentAmount');
+
+      const summaryTicketPriceElem = document.getElementById('summaryTicketPrice');
+      const summaryFeeElem = document.getElementById('summaryFee');
+      const summaryDeliveryFeeElem = document.getElementById('summaryDeliveryFee');
+      const summaryGrossTotalElem = document.getElementById('summaryGrossTotal');
+      const summaryDiscountElem = document.getElementById('summaryDiscount');
+      const finalPaymentAmountElem = document.getElementById('finalPaymentAmount');
+
+
+      // 1. 선택 내역 업데이트
+      summaryDateElem.textContent = selectedDate ? `${selectedDate.getFullYear()}.${String(selectedDate.getMonth() + 1).padStart(2, '0')}.${String(selectedDate.getDate()).padStart(2, '0')} (${['일', '월', '화', '수', '목', '금', '토'][selectedDate.getDay()]})` : '선택 안 됨';
+      summaryTimeElem.textContent = selectedTime ? selectedTime : '선택 안 됨';
+      summaryQuantityElem.textContent = selectedSeats.length + ' 매';
+
+      if (selectedSeats.length > 0) {
+        let seatNames = selectedSeats.map(seat => seat.name);
+        if (seatNames.length > 3) {
+          summarySeatElem.textContent = `${seatNames.slice(0, 3).join(', ')} 외 ${seatNames.length - 3}매`;
+        } else {
+          summarySeatElem.textContent = seatNames.join(', ');
+        }
+      } else {
+        summarySeatElem.textContent = '선택 안 됨';
+      }
+
+
+      // 2. 결제 내역 업데이트
+      totalTicketPrice = selectedSeats.reduce((sum, seat) => sum + seat.price, 0);
+      const bookingFee = selectedSeats.length > 0 ? selectedSeats.length * 1000 : 0; // 매당 1000원
+      const deliveryFee = 0; // 현재는 배송료 없음
+      let discount = 0; // 할인 금액
+
+      // 쿠폰 적용 (예시: 선택된 쿠폰 값 반영)
+      const availableCouponsSelect = document.getElementById('availableCoupons');
+      const selectedCouponValue = parseInt(availableCouponsSelect ? availableCouponsSelect.value : '0');
+      if (selectedCouponValue > 0) {
+        discount += selectedCouponValue;
+      }
+
+      // 포인트 사용 (예시)
+      const usePointsCheckbox = document.getElementById('usePoints');
+      if (usePointsCheckbox && usePointsCheckbox.checked) {
+        discount += 1500; // 보유 포인트만큼 할인 (임의값)
+      }
+
+
+      const grossTotal = totalTicketPrice + bookingFee + deliveryFee;
+      const finalPayment = grossTotal - discount;
+
+      ticketAmountElem.textContent = totalTicketPrice.toLocaleString() + '원';
+      feeAmountElem.textContent = bookingFee.toLocaleString() + '원';
+      discountAmountElem.textContent = '-' + discount.toLocaleString() + '원';
+      totalPaymentAmountElem.textContent = finalPayment.toLocaleString() + '원';
+
+      summaryTicketPriceElem.textContent = totalTicketPrice.toLocaleString();
+      summaryFeeElem.textContent = bookingFee.toLocaleString();
+      summaryDeliveryFeeElem.textContent = deliveryFee.toLocaleString();
+      summaryGrossTotalElem.textContent = grossTotal.toLocaleString();
+      summaryDiscountElem.textContent = '-' + discount.toLocaleString();
+      finalPaymentAmountElem.textContent = finalPayment.toLocaleString();
+    }
+
+    // === 이벤트 리스너 ===
+    document.addEventListener('DOMContentLoaded', function () {
+      // 달력 초기화
+      renderCalendar(currentCalendarDate);
+      document.getElementById('prevMonthBtn').addEventListener('click', () => {
+        currentCalendarDate.setMonth(currentCalendarDate.getMonth() - 1);
+        renderCalendar(currentCalendarDate);
+      });
+      document.getElementById('nextMonthBtn').addEventListener('click', () => {
+        currentCalendarDate.setMonth(currentCalendarDate.getMonth() + 1);
+        renderCalendar(currentCalendarDate);
+      });
+
+      // 모달 열릴 때 초기화
+      const bookingModal = document.getElementById('bookingModal');
+      if (bookingModal) {
+        bookingModal.addEventListener('show.bs.modal', function () {
+          goToStep(1); // 모달이 열릴 때 step1으로 초기화
+          // 모든 선택 상태 초기화
+          selectedDate = null;
+          selectedTime = null;
+          selectedSeats = [];
+          renderCalendar(new Date()); // 달력 현재 월로 초기화
+          loadTimeslots(''); // 회차 선택 영역 비우기
+          updateSelectedSeatsUI(); // 좌석 목록 UI 초기화
+          updateSummary(); // 요약 정보 초기화
+        });
+      }
+
+      // 할인/쿠폰/포인트 변경 시 요약 정보 즉시 업데이트
+      const availableCouponsSelect = document.getElementById('availableCoupons');
+      if (availableCouponsSelect) availableCouponsSelect.addEventListener('change', updateSummary);
+      const usePointsCheckbox = document.getElementById('usePoints');
+      if (usePointsCheckbox) usePointsCheckbox.addEventListener('change', updateSummary);
+    });
+  </script>
+</body>
+
+</html>

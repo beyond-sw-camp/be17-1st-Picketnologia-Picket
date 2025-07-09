@@ -1,0 +1,10 @@
+{
+    "success": true,
+    "code": "PAYMENT_INITIATED",             
+    "message": "결제 준비가 완료되었습니다.", 
+    "data": {
+        "transactionId": "PG_TRX_ID_XYZ123",
+        "orderId": "ORD-20250709-001,
+        "pgRedirectUrl": "https://pg-company.com/payment?param=..."
+    }
+}

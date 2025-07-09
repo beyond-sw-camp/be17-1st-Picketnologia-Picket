@@ -1,0 +1,10 @@
+{
+  "message": "답변이 성공적으로 등록되었습니다.",
+  "data": {
+    "answerId": 56,
+    "inquiryId": 103,
+    "content": "답변내용",
+    "author": "판매자 이름", 
+    "createdAt": "2025-06-30"
+  }
+}

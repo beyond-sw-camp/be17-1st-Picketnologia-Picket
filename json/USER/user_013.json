@@ -1,0 +1,21 @@
+{
+	"success": true,
+	"data": {
+	  "reservations": [
+		{
+		  "reservationId": "예매번호",
+		  "performanceTitle": "뮤지컬 캣츠",
+		  "performanceDate": "2025-07-15T19:30:00",
+		  "reservationStatus": "CONFIRMED",
+		  "reservedAt": "2025-06-27T14:00:00"
+		},
+		{
+		  "reservationId": "예매번호",
+		  "performanceTitle": "콘서트 IU",
+		  "performanceDate": "2025-08-01T18:00:00",
+		  "reservationStatus": "CANCELED",
+		  "reservedAt": "2025-06-20T20:00:00"
+		}
+	  ]
+	  }
+  }

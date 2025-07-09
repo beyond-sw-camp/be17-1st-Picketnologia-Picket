@@ -1,0 +1,16 @@
+{
+  "message": "문의글 조회가 완료되었습니다.",
+  "data": {
+    "inquiryId": 101,
+    "title": "제목",
+    "author": "김**",
+    "createdAt": "2025-10-27",
+    "isPrivate": false,
+    "content": "test01",
+    "answer": {
+      "author": "판매자",
+      "createdAt": "2025-10-30",
+      "content": "test02"
+    }
+  }
+}
